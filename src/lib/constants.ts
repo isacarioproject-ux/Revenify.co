@@ -1,7 +1,7 @@
 export const APP_URL = 'https://app.revenify.co'
-export const DOCS_URL = 'https://revenify.co/docs'
-export const COMMUNITY_URL = 'https://community.revenify.co'
-export const BLOG_URL = 'https://revenify.co/blog'
+export const DOCS_URL = '/docs'
+export const COMMUNITY_URL = 'https://revenify.slack.com'
+export const BLOG_URL = '/blog'
 
 export const SOCIAL_LINKS = {
   twitter: 'https://twitter.com/revenify',
@@ -134,15 +134,15 @@ export const STATS = [
 
 export const NAVIGATION = {
   product: [
-    { name: 'Features', href: '/features' },
-    { name: 'Integrations', href: '/integrations' },
-    { name: 'API', href: '/docs/api' },
+    { name: 'Features', href: '/#features' },
+    { name: 'Integrations', href: '/docs#integrations' },
+    { name: 'API', href: '/docs#api-reference' },
     { name: 'Pricing', href: '/pricing' },
   ],
   resources: [
     { name: 'Documentation', href: '/docs' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Community', href: COMMUNITY_URL },
+    { name: 'Community', href: COMMUNITY_URL, external: true },
     { name: 'Help Center', href: '/help' },
   ],
   company: [

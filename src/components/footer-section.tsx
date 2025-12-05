@@ -75,6 +75,7 @@ export default function FooterSection() {
                                     <a
                                         href={item.href}
                                         className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                                        {...((item as any).external && { target: '_blank', rel: 'noopener noreferrer' })}
                                     >
                                         {item.name}
                                     </a>
