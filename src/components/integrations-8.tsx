@@ -37,14 +37,14 @@ export default function IntegrationsSection() {
                     </div>
 
                     <div className="mt-auto grid grid-cols-[auto_1fr] gap-3">
-                        <div className="bg-white flex aspect-square size-14 items-center justify-center rounded-lg border shadow-sm">
-                            <RevenifyLogo />
+                        <div className="flex aspect-square size-14 items-center justify-center rounded-full overflow-hidden border shadow-sm">
+                            <img src="/testigo1.png" alt="@kleoveY" className="w-full h-full object-cover" />
                         </div>
                         <blockquote>
-                            <p className="text-gray-700">"Connected Stripe in 2 minutes. Now we see exactly which campaigns drive revenue."</p>
+                            <p className="text-gray-700">"Integration in 2 minutes. Now we see exactly which campaigns drive revenue."</p>
                             <div className="mt-2 flex gap-2 text-sm">
-                                <cite className="font-medium text-gray-900">Marcus Chen</cite>
-                                <span className="text-gray-500">Growth Lead, SaaS Co</span>
+                                <cite className="font-medium text-gray-900">@kleoveY</cite>
+                                <span className="text-gray-500">Founder, Revenify</span>
                             </div>
                         </blockquote>
                     </div>
