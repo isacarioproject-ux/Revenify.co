@@ -10,14 +10,6 @@ const StripeLogo = () => (
     </svg>
 )
 
-// Logo Revenify
-const RevenifyLogo = () => (
-    <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <rect fill="#3b82f6" width="40" height="40" rx="8" />
-        <path fill="#fff" d="M12 28V12h8c4 0 6 2 6 5s-2 5-6 5h-4v6h-4zm4-10h4c1.5 0 2-.5 2-1.5S21.5 15 20 15h-4v3z" />
-    </svg>
-)
-
 export default function IntegrationsSection() {
     return (
         <section className="bg-gray-50 py-24 md:py-32">
