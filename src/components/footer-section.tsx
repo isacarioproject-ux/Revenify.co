@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { Logo } from '@/components/logo'
-import { Github, Twitter, Linkedin } from 'lucide-react'
+import { Twitter, Linkedin, Facebook, Instagram, Youtube } from 'lucide-react'
 import { NAVIGATION, SOCIAL_LINKS } from '@/lib/constants'
 
 export default function FooterSection() {
     return (
-        <footer className="bg-gray-50 border-t border-gray-200">
+        <footer className="bg-white border-t border-gray-200">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
                     {/* Company Info */}
@@ -27,20 +27,36 @@ export default function FooterSection() {
                                 <Twitter className="h-5 w-5" />
                             </a>
                             <a
-                                href={SOCIAL_LINKS.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-gray-600 transition-colors"
-                            >
-                                <Github className="h-5 w-5" />
-                            </a>
-                            <a
                                 href={SOCIAL_LINKS.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-400 hover:text-gray-600 transition-colors"
                             >
                                 <Linkedin className="h-5 w-5" />
+                            </a>
+                            <a
+                                href={SOCIAL_LINKS.facebook}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <Facebook className="h-5 w-5" />
+                            </a>
+                            <a
+                                href={SOCIAL_LINKS.instagram}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <Instagram className="h-5 w-5" />
+                            </a>
+                            <a
+                                href={SOCIAL_LINKS.youtube}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <Youtube className="h-5 w-5" />
                             </a>
                         </div>
                     </div>

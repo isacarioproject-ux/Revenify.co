@@ -1,13 +1,17 @@
-export const APP_URL = 'https://app.revenify.co'
+export const APP_URL = 'https://revenify.co/auth'
 export const DOCS_URL = '/docs'
 export const COMMUNITY_URL = 'https://revenify.slack.com'
 export const BLOG_URL = '/blog'
 
 export const SOCIAL_LINKS = {
-  twitter: 'https://twitter.com/revenify',
-  github: 'https://github.com/revenify',
-  linkedin: 'https://linkedin.com/company/revenify',
+  twitter: 'https://x.com/KleoveY',
+  linkedin: 'https://linkedin.com/in/kleove-yaguaracuto-295403399',
+  facebook: 'https://facebook.com/KleoveEY',
+  instagram: 'https://instagram.com/kleoveyaguaracuto',
+  youtube: 'https://youtube.com/@KleoveY',
 } as const
+
+export const CONTACT_EMAIL = 'revenify.co@gmail.com'
 
 export const PRICING_PLANS = [
   {
@@ -134,20 +138,18 @@ export const STATS = [
 
 export const NAVIGATION = {
   product: [
-    { name: 'Features', href: '/#features' },
-    { name: 'Integrations', href: '/docs#integrations' },
-    { name: 'API', href: '/docs#api-reference' },
+    { name: 'Integrations', href: '/integrations' },
+    { name: 'API', href: '/docs' },
     { name: 'Pricing', href: '/pricing' },
   ],
   resources: [
     { name: 'Documentation', href: '/docs' },
     { name: 'Blog', href: '/blog' },
     { name: 'Community', href: COMMUNITY_URL, external: true },
-    { name: 'Help Center', href: '/help' },
+    { name: 'Help Center', href: '/docs' },
   ],
   company: [
     { name: 'About', href: '/about' },
-    { name: 'Careers', href: '/careers' },
     { name: 'Contact', href: '/contact' },
   ],
   legal: [

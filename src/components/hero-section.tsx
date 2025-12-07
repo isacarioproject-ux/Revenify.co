@@ -7,8 +7,9 @@ import { Button } from '@/components/ui/button'
 import { APP_URL } from '@/lib/constants'
 
 const menuItems = [
-    { name: 'Features', to: '#features' },
-    { name: 'How it Works', to: '#how-it-works' },
+    { name: 'Integrations', to: '/integrations' },
+    { name: 'Blog', to: '/blog' },
+    { name: 'Docs', to: '/docs' },
     { name: 'Pricing', to: '/pricing' },
 ]
 
@@ -18,6 +19,13 @@ export default function HeroSection() {
     return (
         <>
             <header>
+                {/* Skip link for accessibility */}
+                <a
+                    href="#main-content"
+                    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-blue-600 focus:px-4 focus:py-2 focus:text-white focus:outline-none"
+                >
+                    Skip to main content
+                </a>
                 <nav className="fixed z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="flex h-16 items-center justify-between">
@@ -43,10 +51,10 @@ export default function HeroSection() {
                             {/* Desktop CTA */}
                             <div className="hidden lg:flex lg:items-center lg:gap-4">
                                 <Button variant="ghost" size="sm" asChild>
-                                    <a href={`${APP_URL}/signin`}>Sign in</a>
+                                    <a href={APP_URL}>Sign in</a>
                                 </Button>
                                 <Button size="sm" asChild>
-                                    <a href={`${APP_URL}/signup`}>Start Free</a>
+                                    <a href={APP_URL}>Start Free</a>
                                 </Button>
                             </div>
 
@@ -80,10 +88,10 @@ export default function HeroSection() {
                                 ))}
                                 <div className="pt-4 space-y-2">
                                     <Button variant="outline" className="w-full" asChild>
-                                        <a href={`${APP_URL}/signin`}>Sign in</a>
+                                        <a href={APP_URL}>Sign in</a>
                                     </Button>
                                     <Button className="w-full" asChild>
-                                        <a href={`${APP_URL}/signup`}>Start Free</a>
+                                        <a href={APP_URL}>Start Free</a>
                                     </Button>
                                 </div>
                             </div>
@@ -92,7 +100,7 @@ export default function HeroSection() {
                 </nav>
             </header>
 
-            <main>
+            <main id="main-content">
                 <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 overflow-hidden">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto max-w-4xl text-center">
@@ -138,7 +146,7 @@ export default function HeroSection() {
                                 className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
                             >
                                 <Button size="lg" asChild>
-                                    <a href={`${APP_URL}/signup`}>
+                                    <a href={APP_URL}>
                                         Start Free Trial
                                         <ArrowRight className="ml-2 h-4 w-4" />
                                     </a>

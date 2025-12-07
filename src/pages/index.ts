@@ -1,13 +1,14 @@
 /**
  * Pages
- * 
+ *
  * Páginas do site:
  * - Home
  * - Pricing
+ * - Docs
+ * - Blog
+ * - BlogPost
  * - NotFound
  */
 
-// TODO: Exportar páginas quando criadas
-// export { Home } from './Home';
-// export { Pricing } from './Pricing';
-// export { NotFound } from './NotFound';
+export { default as Blog } from './Blog'
+export { default as BlogPost } from './BlogPost'

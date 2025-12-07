@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Menu, X, Check } from 'lucide-react'
+import { SEO } from '@/components/SEO'
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import FAQSection from '@/components/faq-section'
@@ -11,8 +12,9 @@ import { APP_URL, PRICING_PLANS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 const menuItems = [
-    { name: 'Features', to: '/#features' },
-    { name: 'How it Works', to: '/#how-it-works' },
+    { name: 'Integrations', to: '/integrations' },
+    { name: 'Blog', to: '/blog' },
+    { name: 'Docs', to: '/docs' },
     { name: 'Pricing', to: '/pricing' },
 ]
 
@@ -31,6 +33,11 @@ export default function Pricing() {
 
     return (
         <>
+            <SEO 
+                title="Pricing"
+                description="Choose the right plan for your business. Start free, then scale as you grow. All plans include a 14-day free trial."
+                url="https://revenify.co/pricing"
+            />
             {/* Header */}
             <header>
                 <nav className="fixed z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg">

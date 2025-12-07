@@ -27,8 +27,9 @@ import { APP_URL } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 const menuItems = [
-    { name: 'Features', to: '/#features' },
-    { name: 'How it Works', to: '/#how-it-works' },
+    { name: 'Integrations', to: '/integrations' },
+    { name: 'Blog', to: '/blog' },
+    { name: 'Docs', to: '/docs' },
     { name: 'Pricing', to: '/pricing' },
 ]
 
@@ -88,6 +89,7 @@ export default function Docs() {
     const [menuState, setMenuState] = useState(false)
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const [activeSection, setActiveSection] = useState('introduction')
+    const [searchQuery, setSearchQuery] = useState('')
 
     // Track active section on scroll
     useEffect(() => {
@@ -126,6 +128,20 @@ export default function Docs() {
         }
         setSidebarOpen(false)
     }
+
+    // Filter navigation items based on search query
+    const filteredNavigation = Object.entries(docsNavigation).reduce(
+        (acc, [category, items]) => {
+            const filteredItems = items.filter((item) =>
+                item.name.toLowerCase().includes(searchQuery.toLowerCase())
+            )
+            if (filteredItems.length > 0) {
+                acc[category as keyof typeof docsNavigation] = filteredItems
+            }
+            return acc
+        },
+        {} as typeof docsNavigation
+    )
 
     return (
         <>
@@ -218,6 +234,8 @@ export default function Docs() {
                                         <input
                                             type="text"
                                             placeholder="Search docs..."
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
                                             className="w-full rounded-lg border border-gray-200 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                                         />
                                     </div>
@@ -225,7 +243,7 @@ export default function Docs() {
 
                                 {/* Navigation */}
                                 <nav className="space-y-6">
-                                    {Object.entries(docsNavigation).map(([category, items]) => (
+                                    {Object.entries(filteredNavigation).map(([category, items]) => (
                                         <div key={category}>
                                             <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
                                                 {category}
@@ -283,6 +301,8 @@ export default function Docs() {
                                             <input
                                                 type="text"
                                                 placeholder="Search docs..."
+                                                value={searchQuery}
+                                                onChange={(e) => setSearchQuery(e.target.value)}
                                                 className="w-full rounded-lg border border-gray-200 py-2 pl-10 pr-4 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                                             />
                                         </div>
@@ -290,7 +310,7 @@ export default function Docs() {
 
                                     {/* Navigation */}
                                     <nav className="space-y-6">
-                                        {Object.entries(docsNavigation).map(([category, items]) => (
+                                        {Object.entries(filteredNavigation).map(([category, items]) => (
                                             <div key={category}>
                                                 <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
                                                     {category}
