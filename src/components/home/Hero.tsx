@@ -76,7 +76,7 @@ export const Hero = () => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-8 sm:mt-12 w-full"
         >
-          <div className="relative rounded-md sm:rounded-lg p-[1px] -mx-2 sm:mx-0 overflow-hidden">
+          <div className="relative rounded-md sm:rounded-lg p-[1px] -mx-4 sm:mx-0 overflow-visible">
             {/* Animated border effect */}
             <motion.span
               className="absolute inset-0 overflow-hidden rounded-md sm:rounded-lg"
@@ -89,11 +89,11 @@ export const Hero = () => {
               />
             </motion.span>
             {/* Image container */}
-            <div className="relative rounded-md sm:rounded-lg bg-neutral-900 overflow-hidden aspect-[16/9]">
+            <div className="relative rounded-md sm:rounded-lg bg-neutral-900 overflow-hidden aspect-[16/10] sm:aspect-[16/9]">
               <img 
                 src="/herosection.png.png" 
                 alt="Revenify Dashboard - Revenue Attribution Analytics"
-                className="w-full h-auto object-cover object-top scale-105 sm:scale-100"
+                className="w-full h-full object-cover object-center sm:object-top"
                 loading="eager"
                 decoding="async"
               />
@@ -103,7 +103,7 @@ export const Hero = () => {
       </div>
       
       {/* Bottom Gradient Fade to Black */}
-      <div className="absolute bottom-0 left-0 right-0 h-36 sm:h-[28rem] bg-gradient-to-t from-black via-black/90 to-transparent z-30 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-48 sm:h-[28rem] bg-gradient-to-t from-black via-black/95 to-transparent z-30 pointer-events-none" />
     </section>
   )
 }
