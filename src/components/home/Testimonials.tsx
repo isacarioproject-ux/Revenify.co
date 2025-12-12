@@ -54,8 +54,8 @@ export const Testimonials = () => {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-light"
           >
-            <span className="text-white/90">Trusted by </span>
-            <span className="text-white/50 italic">marketers</span>
+            <span className="text-white/90">Teams that </span>
+            <span className="text-white/50 italic">stopped guessing</span>
           </motion.h2>
 
           {/* Description */}
@@ -66,8 +66,8 @@ export const Testimonials = () => {
             transition={{ delay: 0.2 }}
             className="mt-6 text-white/40 max-w-lg mx-auto"
           >
-            See how marketing teams are using Revenify to track every dollar
-            and optimize their ad spend with precision.
+            See how marketing teams are using Revenify to finally know
+            where their revenue comes from.
           </motion.p>
         </div>
 
@@ -93,7 +93,7 @@ export const Testimonials = () => {
 
             {/* Quote */}
             <p className="text-white/60 text-sm leading-relaxed mb-8">
-              "Before Revenify, we had no idea which campaigns were actually profitable. Now we can see exactly where every conversion comes from and we've cut our wasted ad spend by 40%. The ROI was immediate."
+              "Revenify showed us that 60% of our revenue came from organic search, not paid ads. We reallocated $50K/month and increased ROI by 3x. The clarity was immediate."
             </p>
 
             {/* Author Row */}

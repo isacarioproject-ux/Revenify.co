@@ -27,7 +27,7 @@ export const Hero = () => {
         >
           <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-white/50">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            Real-Time Revenue Attribution Tracking
+            NEW: Multi-Source Attribution
           </span>
         </motion.div>
 
@@ -52,9 +52,8 @@ export const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-4 sm:mt-6 max-w-2xl mx-auto text-base sm:text-lg text-white/70 leading-relaxed px-2"
         >
-          The essential platform for revenue attribution analytics. From tracking 
-          your first visitor to enterprise-scale analytics, build everything on 
-          a unified layer.
+          Know exactly which marketing channels drive revenue.
+          Stop guessing. Start optimizing.
         </motion.p>
 
         {/* CTA */}

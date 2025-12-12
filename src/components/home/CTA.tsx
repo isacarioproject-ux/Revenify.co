@@ -16,20 +16,19 @@ export const CTA = () => {
         >
           {/* Title */}
           <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-[1.2] pb-2">
-            <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent">Ready to track your </span>
-            <span className="bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent">revenue?</span>
+            <span className="bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent">Ready to know where your </span>
+            <span className="bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent">revenue comes from?</span>
           </h2>
 
           {/* Description */}
           <p className="mt-6 text-lg text-white/40 leading-relaxed max-w-2xl mx-auto">
-            Join marketing teams that trust Revenify to attribute every dollar 
-            back to its source. Start your free trial today.
+            Start tracking in under 5 minutes. No credit card required.
           </p>
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-8 py-4 text-sm tracking-wide">
-              START FREE TRIAL
+              START FREE
               <ArrowRight className="w-4 h-4" />
             </AnimatedBorderButton>
             <Link
