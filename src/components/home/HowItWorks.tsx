@@ -1,28 +1,49 @@
 // src/components/home/HowItWorks.tsx
 import { motion } from 'framer-motion'
+import { Code2, Link2, TrendingUp, BarChart3 } from 'lucide-react'
+import { BentoGrid, type BentoItem } from '@/components/ui/bento-grid'
 
-const steps = [
+const bentoItems: BentoItem[] = [
   {
-    number: '1',
     title: 'Add Your Pixel',
-    description: 'Copy & paste one line of code to your website. Takes 2 minutes.',
+    meta: '2 minutes setup',
+    description: 'Copy & paste one line of code to your website. Works with any platform: WordPress, Shopify, custom sites.',
+    icon: <Code2 className="w-4 h-4 text-blue-400" />,
+    status: 'Live',
+    tags: ['One-line install', 'No-code'],
+    colSpan: 2,
+    hasPersistentHover: true,
   },
   {
-    number: '2',
     title: 'Create Tracking Links',
-    description: 'Generate UTM links for each channel: Facebook, YouTube, Email, Ads.',
+    meta: 'Unlimited links',
+    description: 'Generate UTM links for each channel: Facebook, YouTube, Email, Google Ads.',
+    icon: <Link2 className="w-4 h-4 text-purple-400" />,
+    status: 'Updated',
+    tags: ['UTM Builder', 'Multi-channel'],
   },
   {
-    number: '3',
+    title: 'Real-Time Dashboard',
+    meta: 'Live data',
+    description: 'Watch as clicks become leads, and leads become revenue. All in real-time.',
+    icon: <BarChart3 className="w-4 h-4 text-green-400" />,
+    tags: ['Analytics', 'Reports'],
+  },
+  {
     title: 'See Your Revenue',
-    description: 'Watch real-time as clicks become leads, and leads become revenue.',
+    meta: 'Instant insights',
+    description: 'Know exactly which campaigns, ads, and channels drive your revenue. No more guessing.',
+    icon: <TrendingUp className="w-4 h-4 text-emerald-400" />,
+    status: 'Live',
+    tags: ['Attribution', 'ROI'],
+    colSpan: 2,
   },
 ]
 
 export const HowItWorks = () => {
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-black">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           {/* Badge */}
@@ -43,46 +64,25 @@ export const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-light"
+            className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4"
           >
             <span className="text-white/90">Start tracking in </span>
             <span className="text-white/50 italic">3 simple steps</span>
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-white/40 max-w-xl mx-auto"
+          >
+            From zero to full revenue attribution in under 5 minutes. No technical skills required.
+          </motion.p>
         </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + index * 0.1 }}
-              className="relative p-6 bg-[#0D0D0D] border border-white/10 rounded-xl"
-            >
-              {/* Step Number */}
-              <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-                <span className="text-lg font-light text-white/60">{step.number}</span>
-              </div>
-
-              {/* Title */}
-              <h3 className="text-lg font-medium text-white/90 mb-2">
-                {step.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-sm text-white/50 leading-relaxed">
-                {step.description}
-              </p>
-
-              {/* Connector Line (hidden on last item and mobile) */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-10 -right-3 w-6 h-[1px] bg-white/10" />
-              )}
-            </motion.div>
-          ))}
-        </div>
+        {/* Bento Grid */}
+        <BentoGrid items={bentoItems} />
       </div>
     </section>
   )

@@ -62,7 +62,7 @@ export const PRICING_PLANS = [
       'Advanced API access',
       'Webhooks',
       'Custom integrations',
-      'Team collaboration',
+      'White-label reports',
     ],
     cta: 'Start Free Trial',
     ctaUrl: `${APP_URL}/auth?tab=signup&plan=pro`,

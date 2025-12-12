@@ -131,7 +131,7 @@ export default function Integrations() {
                                             "The integration was incredibly simple. In less than 10 minutes we were already tracking all our revenue."
                                         </p>
                                         <p className="mt-3 text-sm">
-                                            <span className="text-white/80 font-medium">KleoveY</span>
+                                            <span className="text-white/80 font-medium">@KleoveY</span>
                                             <span className="text-white/40 ml-2">CEO, Revenify.co</span>
                                         </p>
                                     </div>

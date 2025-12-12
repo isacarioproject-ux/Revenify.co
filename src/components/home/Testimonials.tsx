@@ -11,7 +11,7 @@ const smallTestimonials = [
     author: {
       name: 'Marcus Thompson',
       title: 'Marketing Director, TechFlow',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       initials: 'MT',
     },
   },
@@ -22,7 +22,7 @@ const smallTestimonials = [
     author: {
       name: 'Elena Rodriguez',
       title: 'Growth Lead, ScaleUp Agency',
-      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face',
+      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
       initials: 'ER',
     },
   },
@@ -100,7 +100,7 @@ export const Testimonials = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Avatar className="w-10 h-10">
-                  <AvatarImage src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face" />
+                  <AvatarImage src="https://randomuser.me/api/portraits/men/75.jpg" />
                   <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-800 text-white text-sm">JM</AvatarFallback>
                 </Avatar>
                 <div>
@@ -161,19 +161,19 @@ export const Testimonials = () => {
           {/* Stacked Avatars */}
           <div className="flex -space-x-3">
             <Avatar className="w-8 h-8 border-2 border-black ring ring-black">
-              <AvatarImage src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" />
+              <AvatarImage src="https://randomuser.me/api/portraits/men/22.jpg" />
               <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-800 text-white text-xs">1</AvatarFallback>
             </Avatar>
             <Avatar className="w-8 h-8 border-2 border-black ring ring-black">
-              <AvatarImage src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&h=100&fit=crop&crop=face" />
+              <AvatarImage src="https://randomuser.me/api/portraits/women/28.jpg" />
               <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-800 text-white text-xs">2</AvatarFallback>
             </Avatar>
             <Avatar className="w-8 h-8 border-2 border-black ring ring-black">
-              <AvatarImage src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face" />
+              <AvatarImage src="https://randomuser.me/api/portraits/men/45.jpg" />
               <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-800 text-white text-xs">3</AvatarFallback>
             </Avatar>
             <Avatar className="w-8 h-8 border-2 border-black ring ring-black">
-              <AvatarImage src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" />
+              <AvatarImage src="https://randomuser.me/api/portraits/women/63.jpg" />
               <AvatarFallback className="bg-gradient-to-br from-gray-600 to-gray-800 text-white text-xs">4</AvatarFallback>
             </Avatar>
           </div>
