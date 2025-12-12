@@ -1,4 +1,4 @@
-export const APP_URL = 'https://revenify.co/auth'
+export const APP_URL = 'https://app.revenify.co'
 export const DOCS_URL = '/docs'
 export const COMMUNITY_URL = 'https://revenify.slack.com'
 export const BLOG_URL = '/blog'
@@ -27,7 +27,7 @@ export const PRICING_PLANS = [
       'Community support',
     ],
     cta: 'Start Free',
-    ctaUrl: `${APP_URL}/signup`,
+    ctaUrl: `${APP_URL}/auth?tab=signup`,
     highlighted: false,
   },
   {
@@ -45,7 +45,7 @@ export const PRICING_PLANS = [
       'API access',
     ],
     cta: 'Start Free Trial',
-    ctaUrl: `${APP_URL}/signup?plan=starter`,
+    ctaUrl: `${APP_URL}/auth?tab=signup&plan=starter`,
     highlighted: false,
   },
   {
@@ -65,7 +65,7 @@ export const PRICING_PLANS = [
       'Team collaboration',
     ],
     cta: 'Start Free Trial',
-    ctaUrl: `${APP_URL}/signup?plan=pro`,
+    ctaUrl: `${APP_URL}/auth?tab=signup&plan=pro`,
     highlighted: true,
   },
   {

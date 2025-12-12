@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import { APP_URL } from '@/lib/constants'
 
 interface BlogSidebarProps {
     // Company/Customer info (optional)
@@ -22,14 +23,14 @@ export function BlogSidebar({
 }: BlogSidebarProps) {
     return (
         <aside className="sticky top-24 space-y-6">
-            <div className="space-y-4 py-4">
+            <div className="space-y-4 py-4 p-4 rounded-xl border border-white/10 bg-white/[0.02]">
                 {/* Company Logo */}
                 {companyLogo && (
                     <div>
                         <img
                             src={companyLogo}
                             alt={companyName || 'Company'}
-                            className="h-12 w-12 rounded-full border border-neutral-200"
+                            className="h-12 w-12 rounded-full border border-white/10"
                         />
                     </div>
                 )}
@@ -37,10 +38,10 @@ export function BlogSidebar({
                 {/* About Section */}
                 {companyAbout && (
                     <div>
-                        <h3 className="text-xs font-semibold text-neutral-900 uppercase tracking-wide mb-2">
+                        <h3 className="text-xs font-semibold text-white uppercase tracking-wide mb-2">
                             About
                         </h3>
-                        <p className="text-sm text-neutral-600 leading-relaxed">
+                        <p className="text-sm text-white/60 leading-relaxed">
                             {companyAbout}
                         </p>
                     </div>
@@ -49,10 +50,10 @@ export function BlogSidebar({
                 {/* Industry */}
                 {companyIndustry && (
                     <div>
-                        <h3 className="text-xs font-semibold text-neutral-900 uppercase tracking-wide mb-2">
+                        <h3 className="text-xs font-semibold text-white uppercase tracking-wide mb-2">
                             Industry
                         </h3>
-                        <p className="text-sm text-neutral-600">
+                        <p className="text-sm text-white/60">
                             {companyIndustry}
                         </p>
                     </div>
@@ -61,10 +62,10 @@ export function BlogSidebar({
                 {/* Company Size */}
                 {companySize && (
                     <div>
-                        <h3 className="text-xs font-semibold text-neutral-900 uppercase tracking-wide mb-2">
+                        <h3 className="text-xs font-semibold text-white uppercase tracking-wide mb-2">
                             Company Size
                         </h3>
-                        <p className="text-sm text-neutral-600">
+                        <p className="text-sm text-white/60">
                             {companySize}
                         </p>
                     </div>
@@ -73,10 +74,10 @@ export function BlogSidebar({
                 {/* Founded */}
                 {companyFounded && (
                     <div>
-                        <h3 className="text-xs font-semibold text-neutral-900 uppercase tracking-wide mb-2">
+                        <h3 className="text-xs font-semibold text-white uppercase tracking-wide mb-2">
                             Founded
                         </h3>
-                        <p className="text-sm text-neutral-600">
+                        <p className="text-sm text-white/60">
                             {companyFounded}
                         </p>
                     </div>
@@ -85,14 +86,14 @@ export function BlogSidebar({
                 {/* Website */}
                 {companyWebsite && (
                     <div>
-                        <h3 className="text-xs font-semibold text-neutral-900 uppercase tracking-wide mb-2">
+                        <h3 className="text-xs font-semibold text-white uppercase tracking-wide mb-2">
                             Website
                         </h3>
                         <a
                             href={companyWebsite.startsWith('http') ? companyWebsite : `https://${companyWebsite}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm text-blue-600 hover:underline"
+                            className="text-sm text-blue-400 hover:underline"
                         >
                             {companyWebsite.replace(/^https?:\/\//, '')}
                         </a>
@@ -101,13 +102,13 @@ export function BlogSidebar({
             </div>
 
             {/* CTA Section */}
-            <div className="pt-2">
-                <h3 className="text-sm font-semibold text-neutral-900 mb-3">
+            <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+                <h3 className="text-sm font-semibold text-white mb-3">
                     Ready to track your revenue?
                 </h3>
                 <a
-                    href="/auth"
-                    className="text-sm text-blue-600 hover:text-blue-700 hover:underline inline-flex items-center gap-1"
+                    href={`${APP_URL}/auth`}
+                    className="text-sm text-blue-400 hover:text-blue-300 hover:underline inline-flex items-center gap-1"
                 >
                     Start Free Trial
                     <ArrowRight className="h-3 w-3" />

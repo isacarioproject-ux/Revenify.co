@@ -42,6 +42,22 @@ export const SEO = ({
 
             {/* Additional */}
             <link rel="canonical" href={url} />
+            
+            {/* Schema.org JSON-LD */}
+            <script type="application/ld+json">
+                {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "name": "Revenify",
+                    "url": "https://revenify.co",
+                    "description": description,
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://revenify.co/blog?q={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                })}
+            </script>
         </Helmet>
     )
 }

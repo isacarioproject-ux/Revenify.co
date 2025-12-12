@@ -1,23 +1,22 @@
 import { SEO } from '@/components/SEO'
-import HeroSection from '@/components/hero-section'
-import StatsSection from '@/components/stats-section'
-import FeaturesSection from '@/components/features-section'
-import HowItWorks from '@/components/how-it-works'
-import TestimonialsSection from '@/components/testimonials-section'
-import CTASection from '@/components/cta-section'
-import FooterSection from '@/components/footer-section'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
+import { Hero, FeatureCards, APIIntegration, Dashboard, Testimonials, CTA } from '@/components/home'
 
 export default function Home() {
     return (
         <>
             <SEO />
-            <HeroSection />
-            <StatsSection />
-            <FeaturesSection />
-            <HowItWorks />
-            <TestimonialsSection />
-            <CTASection />
-            <FooterSection />
+            <Header />
+            <main>
+                <Hero />
+                <APIIntegration />
+                <FeatureCards />
+                <Dashboard />
+                <Testimonials />
+                <CTA />
+            </main>
+            <Footer />
         </>
     )
 }

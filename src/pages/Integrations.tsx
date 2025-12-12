@@ -1,32 +1,13 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, animate } from 'framer-motion'
-import { ArrowRight, Menu, X, Key, Webhook, CreditCard, Code2, BarChart3, Zap, ChevronRight, Sparkles } from 'lucide-react'
-import { Logo } from '@/components/logo'
-import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
+import { ArrowRight, Key, Webhook, Code2, BarChart3, Zap, Database } from 'lucide-react'
 import { APP_URL } from '@/lib/constants'
 import SEO from '@/components/SEO'
-import FooterSection from '@/components/footer-section'
-import IntegrationsSection from '@/components/integrations-8'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
+import { CTA } from '@/components/home/CTA'
 import { cn } from '@/lib/utils'
-
-const menuItems = [
-    { name: 'Integrations', to: '/integrations' },
-    { name: 'Blog', to: '/blog' },
-    { name: 'Docs', to: '/docs' },
-    { name: 'Pricing', to: '/pricing' },
-]
-
-// Main integrations (the real ones we have)
-const mainIntegrations = [
-    { name: 'Stripe', description: 'Auto-track payments and attribute revenue', logo: 'stripe' },
-    { name: 'REST API', description: 'Full programmatic access with SDK', logo: 'api' },
-    { name: 'Webhooks', description: 'Real-time events for leads and revenue', logo: 'webhook' },
-    { name: 'Pixel Tracking', description: 'JS snippet for visitor tracking', logo: 'pixel' },
-    { name: 'Analytics Export', description: 'Export data to BI tools', logo: 'analytics' },
-    { name: 'Zapier', description: 'Connect to 5,000+ apps (coming soon)', logo: 'zapier', soon: true },
-]
-
+import { AnimatedBorderButton } from '@/components/ui/moving-border'
 
 // Stripe Logo
 const StripeLogo = ({ className }: { className?: string }) => (
@@ -36,155 +17,8 @@ const StripeLogo = ({ className }: { className?: string }) => (
     </svg>
 )
 
-// Revenify Logo
-const RevenifyLogo = ({ className }: { className?: string }) => (
-    <svg viewBox="0 0 40 40" className={cn("h-8 w-8", className)}>
-        <rect fill="#3b82f6" width="40" height="40" rx="8" />
-        <path fill="#fff" d="M12 28V12h8c4 0 6 2 6 5s-2 5-6 5h-4v6h-4zm4-10h4c1.5 0 2-.5 2-1.5S21.5 15 20 15h-4v3z" />
-    </svg>
-)
-
-// AI Card Skeleton with animations - shows real integration icons
-const AICardSkeleton = () => {
-    const scale = [1, 1.1, 1]
-    const transform = ["translateY(0px)", "translateY(-4px)", "translateY(0px)"]
-
-    useEffect(() => {
-        const sequence = [
-            [".circle-1", { scale, transform }, { duration: 0.8 }],
-            [".circle-2", { scale, transform }, { duration: 0.8 }],
-            [".circle-3", { scale, transform }, { duration: 0.8 }],
-            [".circle-4", { scale, transform }, { duration: 0.8 }],
-            [".circle-5", { scale, transform }, { duration: 0.8 }],
-        ]
-        // @ts-ignore
-        animate(sequence, { repeat: Infinity, repeatDelay: 1 })
-    }, [])
-
-    return (
-        <div className="p-8 overflow-hidden h-full relative flex items-center justify-center">
-            <div className="flex flex-row shrink-0 justify-center items-center gap-2">
-                <Container className="h-8 w-8 circle-1">
-                    <CreditCard className="h-4 w-4 text-[#635BFF]" />
-                </Container>
-                <Container className="h-12 w-12 circle-2">
-                    <Key className="h-6 w-6 text-emerald-600" />
-                </Container>
-                <Container className="circle-3">
-                    <RevenifyLogo className="h-8 w-8" />
-                </Container>
-                <Container className="h-12 w-12 circle-4">
-                    <Webhook className="h-6 w-6 text-orange-600" />
-                </Container>
-                <Container className="h-8 w-8 circle-5">
-                    <Code2 className="h-4 w-4 text-blue-600" />
-                </Container>
-            </div>
-
-            <div className="h-40 w-px absolute top-20 m-auto z-40 bg-gradient-to-b from-transparent via-cyan-500 to-transparent animate-pulse">
-                <div className="w-10 h-32 top-1/2 -translate-y-1/2 absolute -left-10">
-                    <AISparkles />
-                </div>
-            </div>
-        </div>
-    )
-}
-
-const AISparkles = () => {
-    const randomMove = () => Math.random() * 2 - 1
-    const randomOpacity = () => Math.random()
-    const random = () => Math.random()
-
-    return (
-        <div className="absolute inset-0">
-            {[...Array(12)].map((_, i) => (
-                <motion.span
-                    key={`star-${i}`}
-                    animate={{
-                        top: `calc(${random() * 100}% + ${randomMove()}px)`,
-                        left: `calc(${random() * 100}% + ${randomMove()}px)`,
-                        opacity: randomOpacity(),
-                        scale: [1, 1.2, 0],
-                    }}
-                    transition={{
-                        duration: random() * 2 + 4,
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    style={{
-                        position: "absolute",
-                        top: `${random() * 100}%`,
-                        left: `${random() * 100}%`,
-                        width: `2px`,
-                        height: `2px`,
-                        borderRadius: "50%",
-                        zIndex: 1,
-                    }}
-                    className="inline-block bg-blue-600"
-                />
-            ))}
-        </div>
-    )
-}
-
-const Container = ({ className, children }: { className?: string; children: React.ReactNode }) => (
-    <div className={cn(
-        "h-16 w-16 rounded-full flex items-center justify-center bg-white shadow-[0px_0px_8px_0px_rgba(59,130,246,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.20)]",
-        className
-    )}>
-        {children}
-    </div>
-)
-
-// Card component for integration list
-const IntegrationCard = ({ name, description, logo, soon }: { name: string; description: string; logo: string; soon?: boolean }) => {
-    const getIcon = () => {
-        switch (logo) {
-            case 'stripe': return <StripeLogo />
-            case 'api': return <Key className="h-6 w-6 text-emerald-600" />
-            case 'webhook': return <Webhook className="h-6 w-6 text-orange-600" />
-            case 'pixel': return <Code2 className="h-6 w-6 text-blue-600" />
-            case 'analytics': return <BarChart3 className="h-6 w-6 text-purple-600" />
-            case 'zapier': return <Zap className="h-6 w-6 text-yellow-600" />
-            default: return <div className="h-6 w-6 rounded bg-gradient-to-br from-blue-500 to-cyan-500" />
-        }
-    }
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={cn(
-                "group relative rounded-xl border bg-white p-6 shadow-sm hover:shadow-md transition-all",
-                logo === 'stripe' ? "border-[#635BFF]/30 hover:border-[#635BFF]/50" : "border-gray-200 hover:border-blue-200",
-                soon && "opacity-60"
-            )}
-        >
-            <div className="flex items-start gap-4">
-                <div className={cn(
-                    "flex h-12 w-12 items-center justify-center rounded-lg transition-colors",
-                    logo === 'stripe' ? "bg-[#635BFF]/10" : "bg-gray-50 group-hover:bg-blue-50"
-                )}>
-                    {getIcon()}
-                </div>
-                <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors flex items-center gap-2">
-                        {name}
-                        {soon && <span className="text-[10px] bg-gray-200 px-1.5 py-0.5 rounded">Soon</span>}
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-600">{description}</p>
-                </div>
-                <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
-            </div>
-        </motion.div>
-    )
-}
-
 
 export default function Integrations() {
-    const [menuState, setMenuState] = useState(false)
-
     return (
         <>
             <SEO
@@ -193,192 +27,303 @@ export default function Integrations() {
                 url="https://revenify.co/integrations"
             />
 
-            {/* Header */}
-            <header>
-                <nav className="fixed z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="flex h-16 items-center justify-between">
-                            <Link to="/" className="flex items-center">
-                                <Logo />
-                            </Link>
+            <Header />
 
-                            <div className="hidden lg:flex lg:items-center lg:gap-8">
-                                {menuItems.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        to={item.to}
-                                        className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-
-                            <div className="hidden lg:flex lg:items-center lg:gap-4">
-                                <Button variant="ghost" size="sm" asChild>
-                                    <a href={APP_URL}>Sign in</a>
-                                </Button>
-                                <Button size="sm" asChild>
-                                    <a href={APP_URL}>Start Free</a>
-                                </Button>
-                            </div>
-
-                            <button
-                                onClick={() => setMenuState(!menuState)}
-                                className="lg:hidden p-2 text-gray-600"
-                            >
-                                {menuState ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                            </button>
-                        </div>
-                    </div>
-
-                    {menuState && (
+            <main className="bg-black">
+                {/* Hero Section */}
+                <section className="pt-32 pb-20 px-6">
+                    <div className="max-w-4xl mx-auto text-center">
                         <motion.div
-                            initial={{ opacity: 0, y: -10 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="lg:hidden border-t border-gray-200 bg-white px-4 py-4"
+                            className="mb-6"
                         >
-                            <div className="space-y-2">
-                                {menuItems.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        to={item.to}
-                                        onClick={() => setMenuState(false)}
-                                        className="block py-2 text-base font-medium text-gray-600 hover:text-gray-900"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                ))}
-                                <div className="pt-4 space-y-2">
-                                    <Button variant="outline" className="w-full" asChild>
-                                        <a href={APP_URL}>Sign in</a>
-                                    </Button>
-                                    <Button className="w-full" asChild>
-                                        <a href={APP_URL}>Start Free</a>
-                                    </Button>
-                                </div>
-                            </div>
+                            <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-white/50">
+                                INTEGRATIONS
+                            </span>
                         </motion.div>
-                    )}
-                </nav>
-            </header>
 
-            <main>
-                {/* Hero Section with Tailark Integration Component */}
-                <div className="pt-16">
-                    <IntegrationsSection />
-                </div>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.2] pb-2"
+                        >
+                            <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">
+                                Connect your
+                            </span>
+                            <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent">
+                                favorite tools
+                            </span>
+                        </motion.h1>
 
-                {/* Integration Cards Section */}
-                <section className="py-24 sm:py-32 bg-white">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-16">
-                            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                                Available Integrations
-                            </h2>
-                            <p className="mt-4 text-lg text-gray-600">
-                                Everything you need to track revenue attribution
-                            </p>
-                        </div>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="mt-6 text-lg text-white/40 max-w-2xl mx-auto"
+                        >
+                            Integrate with Stripe, APIs, Webhooks and more for complete revenue attribution.
+                        </motion.p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-                            {mainIntegrations.map((item) => (
-                                <IntegrationCard key={item.name} {...item} />
-                            ))}
-                        </div>
-
-                        <div className="text-center mt-12">
-                            <Button variant="outline" size="lg" asChild>
-                                <Link to="/docs">
-                                    View Documentation
-                                    <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                        </div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+                        >
+                            <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-8 py-4 text-sm tracking-wide">
+                                START INTEGRATING
+                                <ArrowRight className="w-4 h-4" />
+                            </AnimatedBorderButton>
+                            <Link
+                                to="/docs"
+                                className="inline-flex items-center gap-2 px-6 py-4 text-white/40 hover:text-white/60 transition-colors text-sm"
+                            >
+                                View Docs
+                                <ArrowRight className="w-4 h-4" />
+                            </Link>
+                        </motion.div>
                     </div>
                 </section>
 
-                {/* AI Features Section with Animated Card */}
-                <section className="py-24 sm:py-32 bg-gray-50">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                                AI-Powered Revenue Intelligence
-                            </h2>
-                            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                                Revenify uses AI to give you unprecedented visibility into your revenue streams
-                            </p>
-                        </div>
-
-                        {/* AI Card with Animation */}
-                        <div className="max-w-sm mx-auto mb-16">
-                            <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-lg">
-                                <div className="h-[15rem] rounded-xl bg-gray-50 [mask-image:radial-gradient(50%_50%_at_50%_50%,white_0%,transparent_100%)]">
-                                    <AICardSkeleton />
-                                </div>
-                                <h3 className="text-lg font-semibold text-gray-900 py-2">
-                                    Universal Integration Hub
-                                </h3>
-                                <p className="text-sm text-gray-600">
-                                    Connect all your tools through Revenify's intelligent hub to unlock 
-                                    predictive analytics and automated revenue attribution.
+                {/* How it Works Section - Layout like image */}
+                <section className="py-24 px-6">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                            {/* Left side - Title and CTA */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="lg:sticky lg:top-32"
+                            >
+                                <h2 className="text-4xl lg:text-5xl font-light leading-tight">
+                                    <span className="text-white/90">Integrate with your </span>
+                                    <span className="text-white/50 italic">favorite tools</span>
+                                </h2>
+                                
+                                <p className="mt-6 text-white/40 max-w-md">
+                                    Seamlessly connect with popular platforms and services to enhance your workflow.
                                 </p>
+
+                                <div className="mt-8">
+                                    <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-6 py-3 text-sm">
+                                        Get Started
+                                    </AnimatedBorderButton>
+                                </div>
+
+                                {/* Testimonial */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.3 }}
+                                    className="mt-16 flex items-start gap-4"
+                                >
+                                    <img 
+                                        src="/testigo1.png" 
+                                        alt="KleoveY" 
+                                        className="w-12 h-12 rounded-xl object-cover flex-shrink-0"
+                                    />
+                                    <div>
+                                        <p className="text-white/60 text-sm leading-relaxed">
+                                            "The integration was incredibly simple. In less than 10 minutes we were already tracking all our revenue."
+                                        </p>
+                                        <p className="mt-3 text-sm">
+                                            <span className="text-white/80 font-medium">KleoveY</span>
+                                            <span className="text-white/40 ml-2">CEO, Revenify.co</span>
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+
+                            {/* Right side - Integration cards grid */}
+                            <div className="grid grid-cols-2 gap-4">
+                                {[
+                                    { icon: Key, name: 'REST API', description: 'Full programmatic access with SDKs', color: 'text-emerald-400' },
+                                    { icon: Webhook, name: 'Webhooks', description: 'Real-time events for leads', color: 'text-blue-400' },
+                                    { icon: Code2, name: 'Pixel Tracking', description: 'JS snippet for tracking', color: 'text-cyan-400' },
+                                    { icon: BarChart3, name: 'Analytics', description: 'Export data to BI tools', color: 'text-purple-400' },
+                                    { icon: Database, name: 'Data Sync', description: 'Sync with your CRM', color: 'text-orange-400' },
+                                    { icon: Zap, name: 'Zapier', description: 'Connect to 5,000+ apps', color: 'text-yellow-400' },
+                                ].map((item, index) => (
+                                    <motion.div
+                                        key={item.name}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.05 }}
+                                        className="group p-5 bg-[#0D0D0D] border border-white/10 rounded-xl hover:border-white/20 transition-all cursor-pointer"
+                                    >
+                                        <item.icon className={cn("w-5 h-5 mb-3", item.color)} />
+                                        <h3 className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                                            {item.name}
+                                        </h3>
+                                        <p className="text-xs text-white/40 mt-1 line-clamp-2">
+                                            {item.description}
+                                        </p>
+                                    </motion.div>
+                                ))}
                             </div>
                         </div>
+                    </div>
+                </section>
 
-                        {/* Feature Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                            {[
-                                { title: 'Predictive Attribution', desc: 'AI predicts which channels will drive conversions' },
-                                { title: 'Automated Insights', desc: 'Get actionable recommendations automatically' },
-                                { title: 'Smart Alerts', desc: 'Real-time notifications when metrics change' },
-                            ].map((feature) => (
-                                <div key={feature.title} className="text-left p-6 rounded-xl bg-white border shadow-sm">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <Sparkles className="h-5 w-5 text-blue-600" />
-                                        <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+                {/* Integration Features - 3 Big Cards like Home */}
+                <section className="py-24 px-6">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="text-center mb-16">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="mb-6"
+                            >
+                                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-white/50">
+                                    KEY FEATURES
+                                </span>
+                            </motion.div>
+                            <motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 }}
+                                className="text-3xl lg:text-4xl font-light"
+                            >
+                                <span className="text-white/90">Built for </span>
+                                <span className="text-white/50 italic">developers</span>
+                            </motion.h2>
+                        </div>
+
+                        {/* 3 Big Feature Cards */}
+                        <div className="space-y-6">
+                            {/* Webhooks Card */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0D0D0D] p-8 hover:border-white/20 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
+                                                <Webhook className="w-6 h-6 text-blue-400" />
+                                            </div>
+                                            <h3 className="text-2xl font-medium text-white/90 mb-3">Real-Time Webhooks</h3>
+                                            <p className="text-white/50 max-w-lg">
+                                                Receive instant notifications when leads convert or revenue is attributed. 
+                                                Configure custom endpoints and receive detailed payloads with all attribution data.
+                                            </p>
+                                            <ul className="mt-6 space-y-2">
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                                    Real-time conversion events
+                                                </li>
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                                    Automatic retry with exponential backoff
+                                                </li>
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                                    HMAC signature for security
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/50 transition-colors" />
                                     </div>
-                                    <p className="text-sm text-gray-600">{feature.desc}</p>
                                 </div>
-                            ))}
-                        </div>
+                            </motion.div>
 
-                        <div className="text-center mt-12">
-                            <Button size="lg" asChild>
-                                <a href={APP_URL}>
-                                    Try AI Analytics
-                                    <ArrowRight className="ml-2 h-4 w-4" />
-                                </a>
-                            </Button>
+                            {/* REST API Card */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 }}
+                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0D0D0D] p-8 hover:border-white/20 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6">
+                                                <Code2 className="w-6 h-6 text-emerald-400" />
+                                            </div>
+                                            <h3 className="text-2xl font-medium text-white/90 mb-3">Complete REST API</h3>
+                                            <p className="text-white/50 max-w-lg">
+                                                Full programmatic access to all your attribution data. 
+                                                Official SDKs for Node.js, Python, Ruby and more. Complete documentation with examples.
+                                            </p>
+                                            <ul className="mt-6 space-y-2">
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                                                    SDKs for all major languages
+                                                </li>
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                                                    Generous rate limits (10k req/min)
+                                                </li>
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                                                    OAuth 2.0 and API keys
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/50 transition-colors" />
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Stripe Connect Card */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="group relative overflow-hidden rounded-2xl border border-[#635BFF]/30 bg-[#0D0D0D] p-8 hover:border-[#635BFF]/50 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#635BFF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <div className="w-12 h-12 rounded-xl bg-[#635BFF]/10 flex items-center justify-center mb-6">
+                                                <StripeLogo className="w-7 h-7" />
+                                            </div>
+                                            <h3 className="text-2xl font-medium text-white/90 mb-3">Stripe Connect</h3>
+                                            <p className="text-white/50 max-w-lg">
+                                                Native integration with Stripe for automatic payment tracking. 
+                                                Attribute each transaction to its original marketing source without additional code.
+                                            </p>
+                                            <ul className="mt-6 space-y-2">
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#635BFF]" />
+                                                    Automatic payment sync
+                                                </li>
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#635BFF]" />
+                                                    Subscriptions and one-time support
+                                                </li>
+                                                <li className="flex items-center gap-2 text-sm text-white/40">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#635BFF]" />
+                                                    Refunds and chargebacks tracked
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/50 transition-colors" />
+                                    </div>
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
                 </section>
 
-                {/* CTA Section */}
-                <section className="py-24 sm:py-32 bg-blue-600">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                            Ready to connect your tools?
-                        </h2>
-                        <p className="mt-4 text-lg text-blue-100">
-                            Start your free trial today and integrate in minutes
-                        </p>
-                        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Button size="lg" variant="secondary" asChild>
-                                <a href={APP_URL}>
-                                    Start Free Trial
-                                    <ArrowRight className="ml-2 h-4 w-4" />
-                                </a>
-                            </Button>
-                            <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white/10" asChild>
-                                <Link to="/docs">Read the Docs</Link>
-                            </Button>
-                        </div>
-                    </div>
-                </section>
+                <CTA />
             </main>
 
-            <FooterSection />
+            <Footer />
         </>
     )
 }

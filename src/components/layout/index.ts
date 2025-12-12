@@ -1,13 +1,6 @@
 /**
- * Layout Components
- * 
- * Componentes de estrutura:
- * - Header
- * - Footer
- * - SEO
+ * Layout Components - Nebula Dark Theme
  */
 
-// TODO: Exportar componentes quando criados
-// export { Header } from './Header';
-// export { Footer } from './Footer';
-// export { SEO } from './SEO';
+export { Header } from './Header'
+export { Footer } from './Footer'

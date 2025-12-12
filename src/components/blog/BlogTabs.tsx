@@ -10,12 +10,12 @@ interface BlogTabsProps {
 export function BlogTabs({ categories, activeCategory, onCategoryChange }: BlogTabsProps) {
     return (
         <Tabs value={activeCategory} onValueChange={onCategoryChange} className="w-full">
-            <TabsList className="inline-flex h-auto p-1 bg-gray-100 rounded-lg">
+            <TabsList className="inline-flex flex-wrap justify-center h-auto p-1 bg-white/5 border border-white/10 rounded-lg gap-1">
                 {categories.map((category) => (
                     <TabsTrigger
                         key={category.id}
                         value={category.slug}
-                        className="px-4 py-2 text-sm font-medium rounded-md transition-all data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm"
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-md text-white/50 transition-all data-[state=active]:bg-neutral-800 data-[state=active]:text-white data-[state=active]:shadow-sm"
                     >
                         {category.name}
                     </TabsTrigger>

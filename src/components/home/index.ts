@@ -1,17 +1,10 @@
 /**
- * Home Page Components
- * 
- * Seções da página inicial:
- * - Hero
- * - Features
- * - Stats
- * - HowItWorks
- * - CTA
+ * Home Page Components - Nebula Dark Theme
  */
 
-// TODO: Exportar componentes quando criados
-// export { Hero } from './Hero';
-// export { Features } from './Features';
-// export { Stats } from './Stats';
-// export { HowItWorks } from './HowItWorks';
-// export { CTA } from './CTA';
+export { Hero } from './Hero'
+export { FeatureCards } from './FeatureCards'
+export { APIIntegration } from './APIIntegration'
+export { Dashboard } from './Dashboard'
+export { Testimonials } from './Testimonials'
+export { CTA } from './CTA'

@@ -1,19 +1,8 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
 import { SEO } from '@/components/SEO'
-import { Logo } from '@/components/logo'
-import { Button } from '@/components/ui/button'
-import FooterSection from '@/components/footer-section'
-import { APP_URL, CONTACT_EMAIL } from '@/lib/constants'
-
-const menuItems = [
-    { name: 'Integrations', to: '/integrations' },
-    { name: 'Blog', to: '/blog' },
-    { name: 'Docs', to: '/docs' },
-    { name: 'Pricing', to: '/pricing' },
-]
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
+import { CONTACT_EMAIL } from '@/lib/constants'
 
 const sections = [
     { id: 'information', title: '1. Information We Collect' },
@@ -22,13 +11,11 @@ const sections = [
     { id: 'data-security', title: '4. Data Security' },
     { id: 'your-rights', title: '5. Your Rights' },
     { id: 'cookies', title: '6. Cookies' },
-    { id: 'changes', title: '7. Changes to Privacy Policy' },
-    { id: 'contact', title: '8. Contact Us' },
+    { id: 'changes', title: '7. Policy Changes' },
+    { id: 'contact', title: '8. Contact' },
 ]
 
 export default function Privacy() {
-    const [menuState, setMenuState] = useState(false)
-
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id)
         if (element) {
@@ -47,83 +34,23 @@ export default function Privacy() {
                 url="https://revenify.co/privacy"
             />
 
-            {/* Header */}
-            <header>
-                <nav className="fixed z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-lg">
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <div className="flex h-16 items-center justify-between">
-                            <Link to="/" className="flex items-center">
-                                <Logo />
-                            </Link>
+            <Header />
 
-                            <div className="hidden lg:flex lg:items-center lg:gap-8">
-                                {menuItems.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        to={item.to}
-                                        className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-
-                            <div className="hidden lg:flex lg:items-center lg:gap-4">
-                                <Button variant="ghost" size="sm" asChild>
-                                    <a href={APP_URL}>Sign in</a>
-                                </Button>
-                                <Button size="sm" asChild>
-                                    <a href={APP_URL}>Start Free</a>
-                                </Button>
-                            </div>
-
-                            <button
-                                onClick={() => setMenuState(!menuState)}
-                                className="lg:hidden p-2 text-gray-600"
-                            >
-                                {menuState ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                            </button>
-                        </div>
-                    </div>
-
-                    {menuState && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="lg:hidden border-t border-gray-200 bg-white px-4 py-4"
-                        >
-                            <div className="space-y-2">
-                                {menuItems.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        to={item.to}
-                                        onClick={() => setMenuState(false)}
-                                        className="block py-2 text-base font-medium text-gray-600 hover:text-gray-900"
-                                    >
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </motion.div>
-                    )}
-                </nav>
-            </header>
-
-            <main className="pt-24 pb-16">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <main className="bg-black min-h-screen pt-24 sm:pt-32 pb-12 sm:pb-16">
+                <div className="mx-auto max-w-4xl px-4 sm:px-6">
                     <div className="lg:grid lg:grid-cols-4 lg:gap-12">
                         {/* Sidebar */}
                         <aside className="hidden lg:block">
-                            <div className="sticky top-24">
-                                <h3 className="text-sm font-semibold text-gray-900 mb-4">
-                                    Table of Contents
+                            <div className="sticky top-32">
+                                <h3 className="text-sm font-medium text-white/80 mb-4">
+                                    Contents
                                 </h3>
                                 <nav className="space-y-2">
                                     {sections.map((section) => (
                                         <button
                                             key={section.id}
                                             onClick={() => scrollToSection(section.id)}
-                                            className="block text-sm text-gray-600 hover:text-blue-600 transition-colors text-left"
+                                            className="block text-sm text-white/40 hover:text-white/70 transition-colors text-left"
                                         >
                                             {section.title}
                                         </button>
@@ -138,36 +65,40 @@ export default function Privacy() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                             >
-                                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                                    Privacy Policy
+                                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-white/50 mb-6">
+                                    LEGAL
+                                </span>
+                                <h1 className="text-4xl lg:text-5xl font-light">
+                                    <span className="text-white/90">Privacy </span>
+                                    <span className="text-white/50 italic">Policy</span>
                                 </h1>
-                                <p className="mt-4 text-sm text-gray-500">
+                                <p className="mt-4 text-sm text-white/40">
                                     Last updated: December 2024
                                 </p>
 
-                                <div className="mt-12 prose prose-gray max-w-none">
-                                    <p className="text-lg text-gray-600">
-                                        At Revenify, we take your privacy seriously. This Privacy Policy explains how we 
-                                        collect, use, disclose, and safeguard your information when you use our platform.
+                                <div className="mt-12 space-y-12">
+                                    <p className="text-white/60">
+                                        At Revenify, we take your privacy seriously. This Privacy Policy explains how 
+                                        we collect, use, disclose, and protect your information when you use our platform.
                                     </p>
 
-                                    <section id="information" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                    <section id="information">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
                                             1. Information We Collect
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
-                                            <p><strong>Personal Information:</strong> Name, email address, company name, and billing information when you create an account.</p>
-                                            <p><strong>Usage Data:</strong> Information about how you use our platform, including pages visited, features used, and time spent.</p>
-                                            <p><strong>Device Information:</strong> IP address, browser type, operating system, and device identifiers.</p>
-                                            <p><strong>Tracking Data:</strong> Data collected through our tracking pixel on your websites, including visitor behavior and conversion events.</p>
+                                        <div className="space-y-3 text-white/50 text-sm">
+                                            <p><span className="text-white/70">Personal Information:</span> Name, email address, company name, and billing information when creating an account.</p>
+                                            <p><span className="text-white/70">Usage Data:</span> Information about how you use our platform, including pages visited, features used, and time spent.</p>
+                                            <p><span className="text-white/70">Device Information:</span> IP address, browser type, operating system, and device identifiers.</p>
+                                            <p><span className="text-white/70">Tracking Data:</span> Data collected through our tracking pixel on your websites, including visitor behavior and conversion events.</p>
                                         </div>
                                     </section>
 
-                                    <section id="how-we-use" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                    <section id="how-we-use">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
                                             2. How We Use Your Information
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
+                                        <div className="space-y-3 text-white/50 text-sm">
                                             <p>We use the information we collect to:</p>
                                             <ul className="list-disc pl-6 space-y-2">
                                                 <li>Provide, maintain, and improve our services</li>
@@ -175,30 +106,30 @@ export default function Privacy() {
                                                 <li>Send administrative information, updates, and security alerts</li>
                                                 <li>Respond to your comments, questions, and requests</li>
                                                 <li>Analyze usage patterns to improve user experience</li>
-                                                <li>Detect, prevent, and address technical issues</li>
+                                                <li>Detect, prevent, and resolve technical issues</li>
                                             </ul>
                                         </div>
                                     </section>
 
-                                    <section id="data-sharing" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                    <section id="data-sharing">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
                                             3. Data Sharing
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
+                                        <div className="space-y-3 text-white/50 text-sm">
                                             <p>We do not sell your personal information. We may share your information with:</p>
                                             <ul className="list-disc pl-6 space-y-2">
-                                                <li><strong>Service Providers:</strong> Third-party companies that help us operate our platform (hosting, payment processing, analytics)</li>
-                                                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                                                <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
+                                                <li><span className="text-white/70">Service Providers:</span> Third-party companies that help us operate our platform</li>
+                                                <li><span className="text-white/70">Legal Requirements:</span> When required by law or to protect our rights</li>
+                                                <li><span className="text-white/70">Business Transfers:</span> In connection with merger, acquisition, or sale of assets</li>
                                             </ul>
                                         </div>
                                     </section>
 
-                                    <section id="data-security" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                    <section id="data-security">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
                                             4. Data Security
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
+                                        <div className="space-y-3 text-white/50 text-sm">
                                             <p>We implement appropriate technical and organizational measures to protect your data:</p>
                                             <ul className="list-disc pl-6 space-y-2">
                                                 <li>End-to-end encryption for data in transit</li>
@@ -210,31 +141,31 @@ export default function Privacy() {
                                         </div>
                                     </section>
 
-                                    <section id="your-rights" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                    <section id="your-rights">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
                                             5. Your Rights
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
+                                        <div className="space-y-3 text-white/50 text-sm">
                                             <p>Depending on your location, you may have the following rights:</p>
                                             <ul className="list-disc pl-6 space-y-2">
-                                                <li><strong>Access:</strong> Request a copy of your personal data</li>
-                                                <li><strong>Rectification:</strong> Request correction of inaccurate data</li>
-                                                <li><strong>Erasure:</strong> Request deletion of your data</li>
-                                                <li><strong>Portability:</strong> Request transfer of your data</li>
-                                                <li><strong>Objection:</strong> Object to certain processing activities</li>
+                                                <li><span className="text-white/70">Access:</span> Request a copy of your personal data</li>
+                                                <li><span className="text-white/70">Rectification:</span> Request correction of inaccurate data</li>
+                                                <li><span className="text-white/70">Deletion:</span> Request deletion of your data</li>
+                                                <li><span className="text-white/70">Portability:</span> Request transfer of your data</li>
+                                                <li><span className="text-white/70">Objection:</span> Object to certain processing activities</li>
                                             </ul>
                                             <p>We comply with GDPR, CCPA, and LGPD requirements.</p>
                                         </div>
                                     </section>
 
-                                    <section id="cookies" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                    <section id="cookies">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
                                             6. Cookies
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
+                                        <div className="space-y-3 text-white/50 text-sm">
                                             <p>We use cookies and similar technologies to:</p>
                                             <ul className="list-disc pl-6 space-y-2">
-                                                <li>Keep you logged in</li>
+                                                <li>Keep you signed in</li>
                                                 <li>Remember your preferences</li>
                                                 <li>Understand how you use our platform</li>
                                                 <li>Improve our services</li>
@@ -243,11 +174,11 @@ export default function Privacy() {
                                         </div>
                                     </section>
 
-                                    <section id="changes" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                    <section id="changes">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
                                             7. Changes to Privacy Policy
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
+                                        <div className="space-y-3 text-white/50 text-sm">
                                             <p>
                                                 We may update this Privacy Policy from time to time. We will notify you of any 
                                                 changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
@@ -255,14 +186,14 @@ export default function Privacy() {
                                         </div>
                                     </section>
 
-                                    <section id="contact" className="mt-12">
-                                        <h2 className="text-2xl font-bold text-gray-900">
-                                            8. Contact Us
+                                    <section id="contact">
+                                        <h2 className="text-xl font-medium text-white/90 mb-4">
+                                            8. Contact
                                         </h2>
-                                        <div className="mt-4 space-y-4 text-gray-600">
+                                        <div className="space-y-3 text-white/50 text-sm">
                                             <p>
                                                 If you have any questions about this Privacy Policy, please contact us at:{' '}
-                                                <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-600 hover:text-blue-700">
+                                                <a href={`mailto:${CONTACT_EMAIL}`} className="text-white/70 hover:text-white underline">
                                                     {CONTACT_EMAIL}
                                                 </a>
                                             </p>
@@ -275,7 +206,7 @@ export default function Privacy() {
                 </div>
             </main>
 
-            <FooterSection />
+            <Footer />
         </>
     )
 }

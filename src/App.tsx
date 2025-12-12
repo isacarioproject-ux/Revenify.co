@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { Toaster } from 'sonner'
+import { ScrollToTop } from '@/components/ScrollToTop'
+import { CookieConsent } from '@/components/CookieConsent'
 import Home from '@/pages/Home'
 import Pricing from '@/pages/Pricing'
 import Docs from '@/pages/Docs'
@@ -16,7 +18,9 @@ function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Toaster position="top-right" richColors />
+        <CookieConsent />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pricing" element={<Pricing />} />
