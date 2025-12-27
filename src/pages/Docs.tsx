@@ -20,6 +20,13 @@ import {
     Key,
     Webhook,
     LineChart,
+    FlaskConical,
+    MapPin,
+    Smartphone,
+    Link as LinkIcon,
+    EyeOff,
+    Bot,
+    Shield,
 } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
@@ -51,6 +58,15 @@ const docsNavigation = {
         { name: 'Authentication', id: 'authentication', icon: Key },
         { name: 'Events API', id: 'events-api', icon: Webhook },
         { name: 'Analytics API', id: 'analytics-api', icon: LineChart },
+    ],
+    'Advanced Features': [
+        { name: 'A/B Testing', id: 'ab-testing', icon: FlaskConical },
+        { name: 'Geo Targeting', id: 'geo-targeting', icon: MapPin },
+        { name: 'Device Targeting', id: 'device-targeting', icon: Smartphone },
+        { name: 'Deep Links', id: 'deep-links', icon: LinkIcon },
+        { name: 'Link Cloaking', id: 'link-cloaking', icon: EyeOff },
+        { name: 'AI Chat', id: 'ai-chat', icon: Bot },
+        { name: 'SSO/SAML', id: 'sso-saml', icon: Shield },
     ],
 }
 
@@ -1077,6 +1093,415 @@ window.revenify.trackLead({
   -H "Authorization: Bearer sk_live_..."`}
                                             
                                         />
+                                    </div>
+                                </div>
+                            </section>
+
+                            <Separator className="my-12" />
+
+                            {/* A/B Testing */}
+                            <section id="ab-testing" className="mb-16 scroll-mt-24">
+                                <h2 className="mb-4 text-3xl font-bold text-white">
+                                    A/B Testing
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-400">
+                                        Available on Starter+
+                                    </div>
+                                    <p className="text-white/60">
+                                        Run experiments on your short links to optimize click-through rates and conversions.
+                                        Test different destinations, titles, and thumbnails to find what works best.
+                                    </p>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Creating an A/B Test
+                                        </h3>
+                                        <CodeBlock
+                                            code={`// Create a link with A/B testing
+const link = await revenify.links.create({
+  url: 'https://example.com/landing-a',
+  abTest: {
+    enabled: true,
+    variants: [
+      { url: 'https://example.com/landing-a', weight: 50 },
+      { url: 'https://example.com/landing-b', weight: 50 }
+    ]
+  }
+});`}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Key Features
+                                        </h3>
+                                        <ul className="space-y-2">
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span>Split traffic between multiple destinations</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span>Custom weight distribution (50/50, 70/30, etc.)</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span>Real-time analytics per variant</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span>Statistical significance indicators</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <Separator className="my-12" />
+
+                            {/* Geo Targeting */}
+                            <section id="geo-targeting" className="mb-16 scroll-mt-24">
+                                <h2 className="mb-4 text-3xl font-bold text-white">
+                                    Geo Targeting
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-400">
+                                        Available on Starter+
+                                    </div>
+                                    <p className="text-white/60">
+                                        Redirect visitors to different destinations based on their geographic location.
+                                        Perfect for localized content, regional pricing, or country-specific landing pages.
+                                    </p>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Configuration
+                                        </h3>
+                                        <CodeBlock
+                                            code={`// Create a geo-targeted link
+const link = await revenify.links.create({
+  url: 'https://example.com/default',
+  geoTargeting: {
+    enabled: true,
+    rules: [
+      { countries: ['US', 'CA'], url: 'https://example.com/north-america' },
+      { countries: ['BR', 'PT'], url: 'https://example.com/portuguese' },
+      { countries: ['DE', 'AT', 'CH'], url: 'https://example.com/german' }
+    ],
+    fallback: 'https://example.com/global'
+  }
+});`}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Supported Regions
+                                        </h3>
+                                        <p className="text-white/60">
+                                            Target by country (195+ countries), continent, or custom region groups.
+                                            IP geolocation is updated in real-time for maximum accuracy.
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <Separator className="my-12" />
+
+                            {/* Device Targeting */}
+                            <section id="device-targeting" className="mb-16 scroll-mt-24">
+                                <h2 className="mb-4 text-3xl font-bold text-white">
+                                    Device Targeting
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-400">
+                                        Available on Starter+
+                                    </div>
+                                    <p className="text-white/60">
+                                        Serve different content based on the visitor's device type, operating system, or browser.
+                                        Optimize user experience across all platforms.
+                                    </p>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Device Rules
+                                        </h3>
+                                        <CodeBlock
+                                            code={`// Create a device-targeted link
+const link = await revenify.links.create({
+  url: 'https://example.com/default',
+  deviceTargeting: {
+    enabled: true,
+    rules: [
+      { device: 'mobile', os: 'ios', url: 'https://apps.apple.com/app/myapp' },
+      { device: 'mobile', os: 'android', url: 'https://play.google.com/store/apps/myapp' },
+      { device: 'desktop', url: 'https://example.com/desktop' }
+    ]
+  }
+});`}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Detection Capabilities
+                                        </h3>
+                                        <ul className="space-y-2">
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span>Device type: Mobile, Tablet, Desktop</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span>Operating System: iOS, Android, Windows, macOS, Linux</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span>Browser: Chrome, Safari, Firefox, Edge, etc.</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <Separator className="my-12" />
+
+                            {/* Deep Links */}
+                            <section id="deep-links" className="mb-16 scroll-mt-24">
+                                <h2 className="mb-4 text-3xl font-bold text-white">
+                                    Deep Links
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/20 px-3 py-1 text-xs font-medium text-purple-400">
+                                        Available on Pro+
+                                    </div>
+                                    <p className="text-white/60">
+                                        Create smart links that open directly in mobile apps when installed,
+                                        or fall back to the web or app store when not.
+                                    </p>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Deep Link Configuration
+                                        </h3>
+                                        <CodeBlock
+                                            code={`// Create a deep link
+const link = await revenify.links.create({
+  url: 'https://example.com/product/123',
+  deepLink: {
+    enabled: true,
+    ios: {
+      scheme: 'myapp://product/123',
+      appStoreId: '123456789',
+      fallback: 'https://apps.apple.com/app/myapp'
+    },
+    android: {
+      scheme: 'myapp://product/123',
+      packageName: 'com.example.myapp',
+      fallback: 'https://play.google.com/store/apps/myapp'
+    }
+  }
+});`}
+                                        />
+                                    </div>
+
+                                    <div className="rounded-lg bg-purple-500/10 border border-purple-500/20 p-4">
+                                        <p className="text-sm text-purple-300">
+                                            <strong>Pro Tip:</strong> Deep links preserve context across the install flow,
+                                            so users land exactly where they intended even after installing your app.
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <Separator className="my-12" />
+
+                            {/* Link Cloaking */}
+                            <section id="link-cloaking" className="mb-16 scroll-mt-24">
+                                <h2 className="mb-4 text-3xl font-bold text-white">
+                                    Link Cloaking
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-purple-500/20 px-3 py-1 text-xs font-medium text-purple-400">
+                                        Available on Pro+
+                                    </div>
+                                    <p className="text-white/60">
+                                        Hide the destination URL from visitors and bots. Perfect for affiliate links,
+                                        protecting your traffic sources, or maintaining brand consistency.
+                                    </p>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Cloaking Options
+                                        </h3>
+                                        <CodeBlock
+                                            code={`// Create a cloaked link
+const link = await revenify.links.create({
+  url: 'https://affiliate.example.com/ref=abc123',
+  cloaking: {
+    enabled: true,
+    method: 'iframe', // or 'redirect', 'meta-refresh'
+    hideReferrer: true,
+    customTitle: 'Special Offer',
+    customDescription: 'Check out this amazing deal'
+  }
+});`}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Cloaking Methods
+                                        </h3>
+                                        <ul className="space-y-2">
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span><strong className="text-white">iframe</strong> - Display destination in an iframe with your branding</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span><strong className="text-white">redirect</strong> - Server-side redirect that hides referrer</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-blue-400" />
+                                                <span><strong className="text-white">meta-refresh</strong> - Client-side redirect with custom delay</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <Separator className="my-12" />
+
+                            {/* AI Chat */}
+                            <section id="ai-chat" className="mb-16 scroll-mt-24">
+                                <h2 className="mb-4 text-3xl font-bold text-white">
+                                    AI Chat
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-400">
+                                        Available on Business
+                                    </div>
+                                    <p className="text-white/60">
+                                        Ask questions about your analytics data in natural language.
+                                        Get instant insights without complex queries or navigating dashboards.
+                                    </p>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Example Queries
+                                        </h3>
+                                        <div className="space-y-3">
+                                            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+                                                <p className="text-white/80 italic">"What was my top performing campaign last month?"</p>
+                                            </div>
+                                            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+                                                <p className="text-white/80 italic">"Show me conversion rates by country for Q4"</p>
+                                            </div>
+                                            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+                                                <p className="text-white/80 italic">"Which links have the highest click-through rate?"</p>
+                                            </div>
+                                            <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+                                                <p className="text-white/80 italic">"Compare mobile vs desktop traffic this week"</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Capabilities
+                                        </h3>
+                                        <ul className="space-y-2">
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>Natural language queries in English, Spanish, and Portuguese</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>Automatic chart and table generation</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>Export insights to PDF or CSV</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>Scheduled reports via email</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <Separator className="my-12" />
+
+                            {/* SSO/SAML */}
+                            <section id="sso-saml" className="mb-16 scroll-mt-24">
+                                <h2 className="mb-4 text-3xl font-bold text-white">
+                                    SSO/SAML
+                                </h2>
+                                <div className="space-y-6">
+                                    <div className="inline-flex items-center gap-2 rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-400">
+                                        Available on Business
+                                    </div>
+                                    <p className="text-white/60">
+                                        Enterprise-grade Single Sign-On integration with SAML 2.0 support.
+                                        Connect Revenify to your identity provider for seamless authentication.
+                                    </p>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Supported Identity Providers
+                                        </h3>
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                            <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
+                                                <p className="text-white/80 text-sm">Okta</p>
+                                            </div>
+                                            <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
+                                                <p className="text-white/80 text-sm">Azure AD</p>
+                                            </div>
+                                            <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
+                                                <p className="text-white/80 text-sm">Google Workspace</p>
+                                            </div>
+                                            <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
+                                                <p className="text-white/80 text-sm">OneLogin</p>
+                                            </div>
+                                            <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
+                                                <p className="text-white/80 text-sm">Auth0</p>
+                                            </div>
+                                            <div className="p-3 bg-white/5 border border-white/10 rounded-lg text-center">
+                                                <p className="text-white/80 text-sm">Custom SAML</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white mb-3">
+                                            Security Features
+                                        </h3>
+                                        <ul className="space-y-2">
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>SAML 2.0 compliant</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>Just-in-time user provisioning</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>Role-based access control (RBAC)</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>Audit logs for compliance</span>
+                                            </li>
+                                            <li className="flex items-start gap-2 text-white/60">
+                                                <ChevronRight className="h-5 w-5 mt-0.5 flex-shrink-0 text-green-400" />
+                                                <span>GDPR and SOC 2 compliant</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </section>
