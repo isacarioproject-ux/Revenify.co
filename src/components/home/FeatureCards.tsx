@@ -1,6 +1,6 @@
 // src/components/home/FeatureCards.tsx
 import { motion } from 'framer-motion'
-import { Zap, Shield, ArrowRight } from 'lucide-react'
+import { Zap, Shield, Bot, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const features = [
@@ -19,15 +19,29 @@ const features = [
     gradient: 'from-blue-500/20 via-blue-500/5 to-transparent',
   },
   {
+    id: 'ai-chat',
+    icon: Bot,
+    iconBg: 'bg-green-500/10',
+    iconColor: 'text-green-400',
+    title: 'AI Chat',
+    description:
+      'Ask questions about your data in natural language. Get instant insights without complex queries or dashboards.',
+    link: {
+      text: 'LEARN ABOUT AI CHAT',
+      href: '/docs',
+    },
+    gradient: 'from-green-500/20 via-green-500/5 to-transparent',
+  },
+  {
     id: 'identity',
     icon: Shield,
     iconBg: 'bg-purple-500/10',
     iconColor: 'text-purple-400',
-    title: 'Identity',
+    title: 'Identity & Security',
     description:
-      'With your Revenify workspace, you verify all events, unlocking full visitor insight and consistent identity resolution.',
+      'SSO/SAML integration, GDPR compliant, and end-to-end encryption. Enterprise-grade security for your data.',
     link: {
-      text: 'LEARN ABOUT IDENTITY',
+      text: 'LEARN ABOUT SECURITY',
       href: '/docs',
     },
     gradient: 'from-purple-500/20 via-purple-500/5 to-transparent',
@@ -37,8 +51,8 @@ const features = [
 export const FeatureCards = () => {
   return (
     <section className="py-8 px-6 bg-black">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.id}

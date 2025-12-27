@@ -2,9 +2,24 @@
 export function parseMarkdown(markdown: string): string {
     let html = markdown
 
+    // Normalize line breaks
+    html = html.replace(/\r\n/g, '\n')
+
+    // Code blocks first (to protect content inside)
+    html = html.replace(/```(\w+)?\n([\s\S]*?)```/gim, (_, lang, code) => {
+        const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        return `<pre><code class="language-${lang || ''}">${escapedCode}</code></pre>`
+    })
+
     // Headers
-    html = html.replace(/^### (.*$)/gim, '<h3 id="$1">$1</h3>')
-    html = html.replace(/^## (.*$)/gim, '<h2 id="$1">$1</h2>')
+    html = html.replace(/^### (.*$)/gim, (_, text) => {
+        const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
+        return `<h3 id="${id}">${text}</h3>`
+    })
+    html = html.replace(/^## (.*$)/gim, (_, text) => {
+        const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
+        return `<h2 id="${id}">${text}</h2>`
+    })
     html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>')
 
     // Bold
@@ -16,28 +31,51 @@ export function parseMarkdown(markdown: string): string {
     // Links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
 
-    // Code blocks
-    html = html.replace(/```(\w+)?\n([\s\S]*?)```/gim, '<pre><code class="language-$1">$2</code></pre>')
-
     // Inline code
     html = html.replace(/`([^`]+)`/gim, '<code>$1</code>')
 
-    // Lists
-    html = html.replace(/^\* (.*$)/gim, '<li>$1</li>')
-    html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    // Process lists (unordered with - or *)
+    html = html.replace(/^[\-\*] (.+)$/gim, '<li>$1</li>')
+    
+    // Process ordered lists
+    html = html.replace(/^\d+\. (.+)$/gim, '<li>$1</li>')
 
-    // Paragraphs
-    html = html.replace(/\n\n/gim, '</p><p>')
-    html = '<p>' + html + '</p>'
+    // Wrap consecutive <li> items in <ul>
+    html = html.replace(/(<li>[\s\S]*?<\/li>)(\n<li>[\s\S]*?<\/li>)*/gim, (match) => {
+        return `<ul>${match}</ul>`
+    })
 
-    // Clean up empty paragraphs
+    // Blockquotes
+    html = html.replace(/^> (.+)$/gim, '<blockquote>$1</blockquote>')
+
+    // Horizontal rules
+    html = html.replace(/^---$/gim, '<hr />')
+
+    // Images
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" class="rounded-lg shadow-md my-6" />')
+
+    // Paragraphs - split by double newlines
+    const blocks = html.split(/\n\n+/)
+    html = blocks.map(block => {
+        block = block.trim()
+        if (!block) return ''
+        // Don't wrap if already a block element
+        if (block.startsWith('<h') || 
+            block.startsWith('<pre') || 
+            block.startsWith('<ul') || 
+            block.startsWith('<ol') || 
+            block.startsWith('<blockquote') ||
+            block.startsWith('<hr') ||
+            block.startsWith('<img')) {
+            return block
+        }
+        // Wrap in paragraph, handling single line breaks as <br>
+        return `<p>${block.replace(/\n/g, '<br />')}</p>`
+    }).join('\n')
+
+    // Clean up any remaining issues
     html = html.replace(/<p><\/p>/gim, '')
-    html = html.replace(/<p>(<h[123])/gim, '$1')
-    html = html.replace(/(<\/h[123]>)<\/p>/gim, '$1')
-    html = html.replace(/<p>(<pre)/gim, '$1')
-    html = html.replace(/(<\/pre>)<\/p>/gim, '$1')
-    html = html.replace(/<p>(<ul)/gim, '$1')
-    html = html.replace(/(<\/ul>)<\/p>/gim, '$1')
+    html = html.replace(/<p>\s*<\/p>/gim, '')
 
     return html
 }

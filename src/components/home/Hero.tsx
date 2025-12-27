@@ -31,26 +31,28 @@ export const Hero = () => {
           </span>
         </motion.div>
 
-        {/* Headline - with gradient effect like reference */}
+        {/* Headline - with text shadow for readability over effect */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] tracking-tight"
+          style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)' }}
         >
           <span className="text-white">Track </span>
-          <span className="text-white/80">every dollar</span>
+          <span className="text-white/90">every dollar</span>
           <br />
           <span className="text-white">to </span>
-          <span className="text-white/80">its source.</span>
+          <span className="text-white/90">its source.</span>
         </motion.h1>
 
-        {/* Description */}
+        {/* Description - with text shadow for readability */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 sm:mt-6 max-w-2xl mx-auto text-base sm:text-lg text-white/70 leading-relaxed px-2"
+          className="mt-4 sm:mt-6 max-w-2xl mx-auto text-base sm:text-lg text-white/80 leading-relaxed px-2"
+          style={{ textShadow: '0 2px 15px rgba(0,0,0,0.7), 0 4px 30px rgba(0,0,0,0.5)' }}
         >
           Know exactly which marketing channels drive revenue.
           Stop guessing. Start optimizing.

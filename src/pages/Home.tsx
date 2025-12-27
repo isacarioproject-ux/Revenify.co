@@ -6,6 +6,7 @@ import {
     PainSection, 
     SolutionSection, 
     HowItWorks, 
+    AdvancedFeatures,
     FeatureCards, 
     APIIntegration, 
     Dashboard, 
@@ -24,6 +25,7 @@ export default function Home() {
                 <PainSection />
                 <SolutionSection />
                 <HowItWorks />
+                <AdvancedFeatures />
                 <APIIntegration />
                 <FeatureCards />
                 <Dashboard />

@@ -4,14 +4,16 @@ import { Check, X, Minus } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const comparisonFeatures = [
-  { feature: 'Real-time data', ga: false, mixpanel: 'partial', revenify: true },
-  { feature: 'Revenue attribution', ga: false, mixpanel: 'partial', revenify: true },
-  { feature: 'Multi-touch models', ga: false, mixpanel: true, revenify: true },
-  { feature: 'Setup time', ga: '1-2 hours', mixpanel: '30+ min', revenify: '2 min' },
-  { feature: 'Learning curve', ga: 'Steep', mixpanel: 'Moderate', revenify: 'Easy' },
-  { feature: 'Pricing', ga: 'Free*', mixpanel: '$$$', revenify: 'Affordable' },
-  { feature: 'GDPR compliant', ga: 'partial', mixpanel: true, revenify: true },
-  { feature: 'Payment integrations', ga: false, mixpanel: 'partial', revenify: true },
+  { feature: 'A/B Testing', dub: true, bitly: false, revenify: true },
+  { feature: 'Deep Links', dub: true, bitly: false, revenify: true },
+  { feature: 'Geo Targeting', dub: true, bitly: false, revenify: true },
+  { feature: 'Device Targeting', dub: true, bitly: false, revenify: true },
+  { feature: 'Link Cloaking', dub: true, bitly: false, revenify: true },
+  { feature: 'AI Chat', dub: false, bitly: false, revenify: true },
+  { feature: 'White-label', dub: false, bitly: false, revenify: true },
+  { feature: 'Customer Journey', dub: false, bitly: false, revenify: true },
+  { feature: 'Revenue Attribution', dub: true, bitly: false, revenify: true },
+  { feature: 'Starting Price', dub: '$24/mo', bitly: '$35/mo', revenify: '$8/mo' },
 ]
 
 const StatusIcon = ({ status }: { status: boolean | string }) => {
@@ -93,10 +95,10 @@ export const Comparison = () => {
             <div className="grid grid-cols-4 gap-4 p-4 border-b border-white/10">
               <div className="text-sm font-medium text-white/50">Feature</div>
               <div className="text-center">
-                <div className="text-sm font-medium text-white/50">Google Analytics</div>
+                <div className="text-sm font-medium text-white/50">Dub.co</div>
               </div>
               <div className="text-center">
-                <div className="text-sm font-medium text-white/50">Mixpanel</div>
+                <div className="text-sm font-medium text-white/50">Bitly</div>
               </div>
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 rounded-full">
@@ -117,10 +119,10 @@ export const Comparison = () => {
               >
                 <div className="text-sm text-white/70">{row.feature}</div>
                 <div className="flex justify-center">
-                  <StatusIcon status={row.ga} />
+                  <StatusIcon status={row.dub} />
                 </div>
                 <div className="flex justify-center">
-                  <StatusIcon status={row.mixpanel} />
+                  <StatusIcon status={row.bitly} />
                 </div>
                 <div className="flex justify-center">
                   <StatusIcon status={row.revenify} />
@@ -138,7 +140,7 @@ export const Comparison = () => {
           transition={{ delay: 0.5 }}
           className="text-center text-xs text-white/30 mt-6"
         >
-          * Google Analytics 4 is free but has data sampling and 24-48h delays
+          Revenify: 3x cheaper than Dub.co with exclusive AI Chat and Customer Journey tracking
         </motion.p>
       </div>
     </section>
