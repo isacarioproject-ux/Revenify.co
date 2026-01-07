@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import { Zap, Check, Database, Cloud } from 'lucide-react'
 
 const integrations = [
-  { name: 'Stripe', connected: true },
-  { name: 'Shopify', connected: true },
-  { name: 'WooCommerce', connected: true },
-  { name: 'Paddle', connected: false },
+  { name: 'Pixel', connected: true },
+  { name: 'Webhooks', connected: true },
+  { name: 'REST API', connected: true },
+  { name: 'Zapier', connected: false },
 ]
 
 const apiItems = [

@@ -30,7 +30,7 @@ export const PRICING_PLANS = [
       'QR Codes (no logo)',
     ],
     cta: 'Start Free',
-    ctaUrl: `${APP_URL}/auth?tab=signup`,
+    ctaUrl: `${APP_URL}/auth?mode=signup`,
     highlighted: false,
   },
   {
@@ -53,7 +53,7 @@ export const PRICING_PLANS = [
       'Revenue Attribution',
     ],
     cta: 'Start Free Trial',
-    ctaUrl: `${APP_URL}/auth?tab=signup&plan=starter`,
+    ctaUrl: `${APP_URL}/auth?mode=signup&plan=starter`,
     highlighted: false,
   },
   {
@@ -76,7 +76,7 @@ export const PRICING_PLANS = [
       'Priority support',
     ],
     cta: 'Start Free Trial',
-    ctaUrl: `${APP_URL}/auth?tab=signup&plan=pro`,
+    ctaUrl: `${APP_URL}/auth?mode=signup&plan=pro`,
     highlighted: true,
   },
   {

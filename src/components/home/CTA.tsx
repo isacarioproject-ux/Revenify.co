@@ -27,7 +27,7 @@ export const CTA = () => {
 
           {/* CTAs */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-8 py-4 text-sm tracking-wide">
+            <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-8 py-4 text-sm tracking-wide">
               START FREE
               <ArrowRight className="w-4 h-4" />
             </AnimatedBorderButton>

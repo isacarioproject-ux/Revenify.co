@@ -18,8 +18,8 @@ const features = [
   },
   {
     icon: Link2,
-    title: '20+ Integrations',
-    description: 'Works with Stripe, Shopify, WooCommerce, and all major payment platforms.',
+    title: 'Powerful Integrations',
+    description: 'Pixel tracking, REST API, Webhooks, Zapier, and custom domain support.',
     color: 'rgba(168, 85, 247, 0.15)',
   },
 ]

@@ -432,7 +432,7 @@ export default function Docs() {
                                                     project key.
                                                 </p>
                                                 <Button size="sm" asChild>
-                                                    <a href={`${APP_URL}/signup`}>
+                                                    <a href={`${APP_URL}/auth?mode=signup`}>
                                                         Sign up free
                                                         <ExternalLink className="ml-2 h-4 w-4" />
                                                     </a>
@@ -458,7 +458,7 @@ export default function Docs() {
                                                     code={`<script>
   window.revenify = { projectKey: 'YOUR_PROJECT_KEY' };
 </script>
-<script src="https://cdn.revenify.co/pixel.js" async></script>`}
+<script src="https://app.revenify.co/pixel/pixel.js" async></script>`}
                                                 />
                                             </div>
                                         </div>
@@ -519,7 +519,7 @@ window.revenify.trackLead({
     debug: false // Set to true for development
   };
 </script>
-<script src="https://cdn.revenify.co/pixel.js" async></script>`}
+<script src="https://app.revenify.co/pixel/pixel.js" async></script>`}
                                             
                                         />
                                     </div>

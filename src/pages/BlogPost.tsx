@@ -139,7 +139,7 @@ export default function BlogPost() {
                                 )}
 
                                 {/* Article Content */}
-                                <div className="prose prose-lg prose-invert max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg prose-strong:text-white prose-li:text-white/70 prose-code:text-white/80 prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded">
+                                <div>
                                     <BlogMarkdown content={post.content} />
                                 </div>
 

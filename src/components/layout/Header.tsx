@@ -46,7 +46,7 @@ export const Header = () => {
           >
             Sign in
           </a>
-          <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-4 py-2 text-xs">
+          <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-4 py-2 text-xs">
             Start Free
           </AnimatedBorderButton>
         </div>
@@ -82,7 +82,7 @@ export const Header = () => {
                 Sign In
               </a>
               <a
-                href={`${APP_URL}/auth?tab=signup`}
+                href={`${APP_URL}/auth?mode=signup`}
                 className="block w-full text-center bg-white text-black px-4 py-3 rounded-full font-medium text-sm"
               >
                 Start Free

@@ -15,7 +15,7 @@ export function BlogCTACard() {
                         Start tracking your revenue attribution in minutes
                     </p>
                     <Button asChild className="w-full group">
-                        <a href={`${APP_URL}/auth?tab=signup`}>
+                        <a href={`${APP_URL}/auth?mode=signup`}>
                             Start Free Trial
                             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </a>

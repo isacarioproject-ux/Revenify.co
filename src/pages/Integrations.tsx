@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Key, Webhook, Code2, BarChart3, Zap, Database } from 'lucide-react'
+import { ArrowRight, Key, Webhook, Code2, BarChart3, Zap, Database, MousePointerClick, Link2, Globe } from 'lucide-react'
 import { APP_URL } from '@/lib/constants'
 import SEO from '@/components/SEO'
 import { Header } from '@/components/layout/Header'
@@ -9,21 +9,13 @@ import { CTA } from '@/components/home/CTA'
 import { cn } from '@/lib/utils'
 import { AnimatedBorderButton } from '@/components/ui/moving-border'
 
-// Stripe Logo
-const StripeLogo = ({ className }: { className?: string }) => (
-    <svg viewBox="0 0 28 28" className={cn("h-7 w-7", className)}>
-        <rect fill="#635BFF" width="28" height="28" rx="6"/>
-        <path fill="#fff" d="M13.3 11.5c0-.8.7-1.1 1.7-1.1 1.5 0 3.5.5 5 1.3V7.9c-1.7-.7-3.3-.9-5-.9-4.1 0-6.8 2.1-6.8 5.7 0 5.5 7.6 4.6 7.6 7 0 .9-.8 1.2-1.9 1.2-1.6 0-3.8-.7-5.5-1.6v3.9c1.9.8 3.7 1.1 5.5 1.1 4.2 0 7-2.1 7-5.7-.1-6-7.6-4.9-7.6-7.1z"/>
-    </svg>
-)
-
 
 export default function Integrations() {
     return (
         <>
             <SEO
                 title="Integrations"
-                description="Connect Revenify with your favorite tools. Integrate with Stripe, Shopify, HubSpot, Salesforce, and 50+ more platforms for complete revenue attribution."
+                description="Connect Revenify with your favorite tools. Use our Pixel Tracking, REST API, Webhooks and more for complete revenue attribution."
                 url="https://revenify.co/integrations"
             />
 
@@ -63,7 +55,7 @@ export default function Integrations() {
                             transition={{ delay: 0.2 }}
                             className="mt-6 text-lg text-white/40 max-w-2xl mx-auto"
                         >
-                            Integrate with Stripe, APIs, Webhooks and more for complete revenue attribution.
+                            Use our Pixel Tracking, REST API, Webhooks and more for complete revenue attribution.
                         </motion.p>
 
                         <motion.div
@@ -72,7 +64,7 @@ export default function Integrations() {
                             transition={{ delay: 0.3 }}
                             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
                         >
-                            <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-8 py-4 text-sm tracking-wide">
+                            <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-8 py-4 text-sm tracking-wide">
                                 START INTEGRATING
                                 <ArrowRight className="w-4 h-4" />
                             </AnimatedBorderButton>
@@ -108,7 +100,7 @@ export default function Integrations() {
                                 </p>
 
                                 <div className="mt-8">
-                                    <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-6 py-3 text-sm">
+                                    <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-6 py-3 text-sm">
                                         Get Started
                                     </AnimatedBorderButton>
                                 </div>
@@ -170,10 +162,10 @@ export default function Integrations() {
                     </div>
                 </section>
 
-                {/* Integration Features - 3 Big Cards like Home */}
+                {/* Integration Features - Bento Grid */}
                 <section className="py-24 px-6">
                     <div className="max-w-4xl mx-auto">
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-12">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -196,124 +188,175 @@ export default function Integrations() {
                             </motion.h2>
                         </div>
 
-                        {/* 3 Big Feature Cards */}
-                        <div className="space-y-6">
-                            {/* Webhooks Card */}
+                        {/* Bento Grid Layout - 4 columns on desktop */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {/* Pixel Tracking - Large Card (3 cols on lg) */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0D0D0D] p-8 hover:border-white/20 transition-all"
+                                className="sm:col-span-2 lg:col-span-3 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-cyan-500/30 transition-all"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="relative z-10">
-                                    <div className="flex items-start justify-between">
-                                        <div>
-                                            <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6">
-                                                <Webhook className="w-6 h-6 text-blue-400" />
-                                            </div>
-                                            <h3 className="text-2xl font-medium text-white/90 mb-3">Real-Time Webhooks</h3>
-                                            <p className="text-white/50 max-w-lg">
-                                                Receive instant notifications when leads convert or revenue is attributed. 
-                                                Configure custom endpoints and receive detailed payloads with all attribution data.
-                                            </p>
-                                            <ul className="mt-6 space-y-2">
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                                                    Real-time conversion events
-                                                </li>
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                                                    Automatic retry with exponential backoff
-                                                </li>
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                                                    HMAC signature for security
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/50 transition-colors" />
+                                    <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4">
+                                        <MousePointerClick className="w-5 h-5 text-cyan-400" />
+                                    </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">Pixel Tracking</h3>
+                                    <p className="text-sm text-white/50 mb-4">
+                                        Lightweight JavaScript snippet that tracks page views, sessions, UTM parameters, and cross-domain attribution automatically.
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        <span className="px-2 py-1 bg-white/5 rounded text-xs text-white/40">Page Views</span>
+                                        <span className="px-2 py-1 bg-white/5 rounded text-xs text-white/40">Sessions</span>
+                                        <span className="px-2 py-1 bg-white/5 rounded text-xs text-white/40">UTM Params</span>
+                                        <span className="px-2 py-1 bg-white/5 rounded text-xs text-white/40">Cross-Domain</span>
                                     </div>
                                 </div>
                             </motion.div>
 
-                            {/* REST API Card */}
+                            {/* Webhooks */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.05 }}
+                                className="lg:col-span-1 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-blue-500/30 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
+                                        <Webhook className="w-5 h-5 text-blue-400" />
+                                    </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">Webhooks</h3>
+                                    <p className="text-sm text-white/50">
+                                        Real-time notifications with HMAC signatures and automatic retries.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* REST API */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0D0D0D] p-8 hover:border-white/20 transition-all"
+                                className="lg:col-span-1 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-emerald-500/30 transition-all"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="relative z-10">
-                                    <div className="flex items-start justify-between">
-                                        <div>
-                                            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6">
-                                                <Code2 className="w-6 h-6 text-emerald-400" />
-                                            </div>
-                                            <h3 className="text-2xl font-medium text-white/90 mb-3">Complete REST API</h3>
-                                            <p className="text-white/50 max-w-lg">
-                                                Full programmatic access to all your attribution data. 
-                                                Official SDKs for Node.js, Python, Ruby and more. Complete documentation with examples.
-                                            </p>
-                                            <ul className="mt-6 space-y-2">
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                                                    SDKs for all major languages
-                                                </li>
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                                                    Generous rate limits (10k req/min)
-                                                </li>
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                                                    OAuth 2.0 and API keys
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/50 transition-colors" />
+                                    <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4">
+                                        <Key className="w-5 h-5 text-emerald-400" />
                                     </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">REST API</h3>
+                                    <p className="text-sm text-white/50">
+                                        Full programmatic access with API keys and OAuth 2.0.
+                                    </p>
                                 </div>
                             </motion.div>
 
-                            {/* Stripe Connect Card */}
+                            {/* Short Links */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.15 }}
+                                className="lg:col-span-1 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-purple-500/30 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4">
+                                        <Link2 className="w-5 h-5 text-purple-400" />
+                                    </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">Short Links</h3>
+                                    <p className="text-sm text-white/50">
+                                        Custom domains, A/B testing, and geo targeting built-in.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* Custom Domains - Large Card (2 cols on lg) */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="group relative overflow-hidden rounded-2xl border border-[#635BFF]/30 bg-[#0D0D0D] p-8 hover:border-[#635BFF]/50 transition-all"
+                                className="sm:col-span-2 lg:col-span-2 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-orange-500/30 transition-all"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#635BFF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="relative z-10">
-                                    <div className="flex items-start justify-between">
-                                        <div>
-                                            <div className="w-12 h-12 rounded-xl bg-[#635BFF]/10 flex items-center justify-center mb-6">
-                                                <StripeLogo className="w-7 h-7" />
-                                            </div>
-                                            <h3 className="text-2xl font-medium text-white/90 mb-3">Stripe Connect</h3>
-                                            <p className="text-white/50 max-w-lg">
-                                                Native integration with Stripe for automatic payment tracking. 
-                                                Attribute each transaction to its original marketing source without additional code.
-                                            </p>
-                                            <ul className="mt-6 space-y-2">
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#635BFF]" />
-                                                    Automatic payment sync
-                                                </li>
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#635BFF]" />
-                                                    Subscriptions and one-time support
-                                                </li>
-                                                <li className="flex items-center gap-2 text-sm text-white/40">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#635BFF]" />
-                                                    Refunds and chargebacks tracked
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <ArrowRight className="w-5 h-5 text-white/20 group-hover:text-white/50 transition-colors" />
+                                    <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4">
+                                        <Globe className="w-5 h-5 text-orange-400" />
                                     </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">Custom Domains</h3>
+                                    <p className="text-sm text-white/50 mb-4">
+                                        Use your own domain for short links via Cloudflare Workers. Full SSL support and easy setup with our documentation.
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        <span className="px-2 py-1 bg-white/5 rounded text-xs text-white/40">Cloudflare Workers</span>
+                                        <span className="px-2 py-1 bg-white/5 rounded text-xs text-white/40">SSL/TLS</span>
+                                        <span className="px-2 py-1 bg-white/5 rounded text-xs text-white/40">Pro & Business</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Zapier */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.25 }}
+                                className="lg:col-span-1 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-yellow-500/30 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center mb-4">
+                                        <Zap className="w-5 h-5 text-yellow-400" />
+                                    </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">Zapier</h3>
+                                    <p className="text-sm text-white/50">
+                                        Connect to 5,000+ apps without code.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* Analytics Export */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="lg:col-span-1 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-indigo-500/30 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center mb-4">
+                                        <BarChart3 className="w-5 h-5 text-indigo-400" />
+                                    </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">Analytics Export</h3>
+                                    <p className="text-sm text-white/50">
+                                        Export data to your BI tools in CSV or JSON.
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            {/* Data Sync - spans 2 cols to fill the row */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.35 }}
+                                className="sm:col-span-2 lg:col-span-2 group relative overflow-hidden rounded-xl border border-white/10 bg-[#0D0D0D] p-6 hover:border-pink-500/30 transition-all"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="relative z-10">
+                                    <div className="w-10 h-10 rounded-lg bg-pink-500/10 flex items-center justify-center mb-4">
+                                        <Database className="w-5 h-5 text-pink-400" />
+                                    </div>
+                                    <h3 className="text-lg font-medium text-white/90 mb-2">Data Sync</h3>
+                                    <p className="text-sm text-white/50">
+                                        Sync attribution data with your CRM. Keep your sales team updated with real-time lead information.
+                                    </p>
                                 </div>
                             </motion.div>
                         </div>

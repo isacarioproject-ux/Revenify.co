@@ -65,7 +65,7 @@ export const Hero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-6 sm:mt-10 flex items-center justify-center"
         >
-          <AnimatedBorderButton as="a" href={`${APP_URL}/auth?tab=signup`} className="px-8 py-4 text-sm tracking-widest uppercase">
+          <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-8 py-4 text-sm tracking-widest uppercase">
             Start Free
             <ArrowRight className="w-4 h-4" />
           </AnimatedBorderButton>
