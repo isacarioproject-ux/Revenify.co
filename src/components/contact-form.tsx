@@ -33,6 +33,10 @@ export default function ContactForm() {
         setIsSubmitting(true)
 
         try {
+            if (!supabase) {
+                throw new Error('Service unavailable')
+            }
+
             const { error } = await supabase
                 .from('contact_submissions')
                 .insert([formData] as any)

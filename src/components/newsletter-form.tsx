@@ -13,6 +13,10 @@ export default function NewsletterForm() {
         setIsSubmitting(true)
 
         try {
+            if (!supabase) {
+                throw new Error('Service unavailable')
+            }
+
             const { error } = await supabase
                 .from('newsletter_subscribers')
                 .insert([{ email }] as any)
