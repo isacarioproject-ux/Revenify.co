@@ -76,7 +76,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-8 sm:mt-12 w-full"
+          className="mt-14 sm:mt-12 w-full"
         >
           <div className="relative rounded-md sm:rounded-lg p-[1px] -mx-4 sm:mx-0 overflow-visible">
             {/* Animated border effect */}
@@ -104,8 +104,8 @@ export const Hero = () => {
         </motion.div>
       </div>
       
-      {/* Bottom Gradient Fade to Black */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 sm:h-[28rem] bg-gradient-to-t from-black via-black/95 to-transparent z-30 pointer-events-none" />
+      {/* Bottom Gradient Fade to Black - taller on mobile to hide watermark */}
+      <div className="absolute bottom-0 left-0 right-0 h-[36rem] sm:h-[28rem] bg-gradient-to-t from-black via-black to-transparent z-30 pointer-events-none" />
     </section>
   )
 }

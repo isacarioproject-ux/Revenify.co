@@ -94,7 +94,7 @@ export default function BlogPost() {
                             className="mb-8"
                         >
                             <Badge variant="secondary" className="mb-3 bg-white/10 text-white/70 border-white/10">
-                                {post.category.name}
+                                {post.category?.name || 'Uncategorized'}
                             </Badge>
                             <h1 className="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                                 {post.title}

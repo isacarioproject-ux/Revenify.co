@@ -57,7 +57,7 @@ export function BlogCard({ post }: BlogCardProps) {
                                 <Avatar className="h-8 w-8 border border-white/10">
                                     <AvatarImage src={post.authorAvatar || undefined} />
                                     <AvatarFallback className="bg-white/10 text-white/60">
-                                        {post.authorName.charAt(0).toUpperCase()}
+                                        {post.authorName?.charAt(0)?.toUpperCase() || 'A'}
                                     </AvatarFallback>
                                 </Avatar>
                                 <div className="flex flex-col">

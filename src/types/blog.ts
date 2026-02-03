@@ -73,7 +73,7 @@ export interface BlogPost {
     coverImage: string | null
     authorName: string
     authorAvatar: string | null
-    category: BlogCategory
+    category: BlogCategory | null
     status: 'draft' | 'published'
     publishedAt: string | null
     readingTime: number

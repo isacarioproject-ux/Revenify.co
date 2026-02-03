@@ -1,11 +1,15 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import type { Database } from '@/types/blog'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error('Missing Supabase environment variables')
+let supabase: SupabaseClient<Database> | null = null
+
+if (supabaseUrl && supabaseAnonKey) {
+    supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
+} else {
+    console.warn('Supabase environment variables not configured. Blog features will be disabled.')
 }
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
+export { supabase }

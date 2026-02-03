@@ -19,13 +19,17 @@ export function useBlogPost(slug: string) {
                 if (postData) {
                     setPost(postData)
 
-                    // Fetch related posts
-                    const related = await getRelatedPosts(
-                        postData.category.id,
-                        postData.slug,
-                        3
-                    )
-                    setRelatedPosts(related)
+                    // Fetch related posts only if category exists
+                    if (postData.category?.id) {
+                        const related = await getRelatedPosts(
+                            postData.category.id,
+                            postData.slug,
+                            3
+                        )
+                        setRelatedPosts(related)
+                    } else {
+                        setRelatedPosts([])
+                    }
                 } else {
                     setPost(null)
                     setRelatedPosts([])

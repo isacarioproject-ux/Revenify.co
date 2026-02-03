@@ -15,7 +15,7 @@ export function BlogAuthorCard({ name, avatar, bio }: BlogAuthorCardProps) {
                     <Avatar className="h-14 w-14">
                         <AvatarImage src={avatar || undefined} />
                         <AvatarFallback className="text-lg">
-                            {name.charAt(0).toUpperCase()}
+                            {name?.charAt(0)?.toUpperCase() || 'A'}
                         </AvatarFallback>
                     </Avatar>
                     <div className="flex-1">

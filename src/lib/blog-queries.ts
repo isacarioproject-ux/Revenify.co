@@ -3,6 +3,11 @@ import type { BlogCategory, BlogPost, BlogPostCard } from '@/types/blog'
 
 // Fetch all categories
 export async function getBlogCategories(): Promise<BlogCategory[]> {
+    if (!supabase) {
+        console.warn('Supabase not configured')
+        return []
+    }
+
     const { data, error } = await supabase
         .from('blog_categories')
         .select('*')
@@ -10,7 +15,7 @@ export async function getBlogCategories(): Promise<BlogCategory[]> {
 
     if (error) {
         console.error('Error fetching categories:', error)
-        throw error
+        return []
     }
 
     return (data as any[]) || []
@@ -21,6 +26,11 @@ export async function getBlogPosts(
     categorySlug?: string,
     limit?: number
 ): Promise<BlogPostCard[]> {
+    if (!supabase) {
+        console.warn('Supabase not configured')
+        return []
+    }
+
     let query = supabase
         .from('blog_posts')
         .select(`
@@ -63,7 +73,7 @@ export async function getBlogPosts(
 
     if (error) {
         console.error('Error fetching posts:', error)
-        throw error
+        return []
     }
 
     // Transform to BlogPostCard format
@@ -84,6 +94,11 @@ export async function getBlogPosts(
 
 // Fetch a single post by slug
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+    if (!supabase) {
+        console.warn('Supabase not configured')
+        return null
+    }
+
     const { data, error } = await supabase
         .from('blog_posts')
         .select(`
@@ -105,7 +120,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
             return null
         }
         console.error('Error fetching post:', error)
-        throw error
+        return null
     }
 
     if (!data) return null
@@ -144,6 +159,11 @@ export async function getRelatedPosts(
     currentSlug: string,
     limit: number = 3
 ): Promise<BlogPostCard[]> {
+    if (!supabase) {
+        console.warn('Supabase not configured')
+        return []
+    }
+
     const { data, error } = await supabase
         .from('blog_posts')
         .select(`
@@ -169,7 +189,7 @@ export async function getRelatedPosts(
 
     if (error) {
         console.error('Error fetching related posts:', error)
-        throw error
+        return []
     }
 
     return ((data as any[]) || []).map((post) => ({
