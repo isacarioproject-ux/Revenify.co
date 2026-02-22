@@ -16,9 +16,9 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 pt-4">
       {/* Floating Header Container */}
-      <nav className="max-w-4xl mx-auto bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full px-6 h-14 flex items-center justify-between shadow-lg shadow-black/20">
+      <nav className="max-w-4xl mx-auto bg-white/5 backdrop-blur-2xl border border-white/10 rounded-full px-4 sm:px-6 h-14 flex items-center justify-between shadow-lg shadow-black/20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img src="/logo.png" alt="Revenify" className="h-5 sm:h-6 w-auto" />

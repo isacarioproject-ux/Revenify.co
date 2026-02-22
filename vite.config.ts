@@ -18,6 +18,7 @@ export default defineConfig({
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'animation': ['framer-motion'],
           'icons': ['lucide-react'],
+          'supabase': ['@supabase/supabase-js'],
         },
       },
     },
