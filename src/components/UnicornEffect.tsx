@@ -25,8 +25,6 @@ interface UnicornEffectProps {
   style?: React.CSSProperties
 }
 
-const MOBILE_BREAKPOINT = 768
-
 export const UnicornEffect = ({
   projectId,
   className = '',
@@ -34,20 +32,11 @@ export const UnicornEffect = ({
 }: UnicornEffectProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const sceneRef = useRef<unknown>(null)
-  const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== 'undefined' && window.innerWidth < MOBILE_BREAKPOINT
-  )
-
-  // Detect mobile on mount
-  useEffect(() => {
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-  }, [])
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
-    // Skip heavy WebGL on mobile to prevent freezing
-    if (isMobile) return
-
     let isMounted = true
+    const isMobile = window.innerWidth < 768
 
     const initScene = async () => {
       let attempts = 0
@@ -57,6 +46,7 @@ export const UnicornEffect = ({
       }
 
       if (!window.UnicornStudio?.addScene || !containerRef.current || !isMounted) {
+        if (isMounted) setHasError(true)
         return
       }
 
@@ -64,14 +54,15 @@ export const UnicornEffect = ({
         const scene = await window.UnicornStudio.addScene({
           element: containerRef.current,
           projectId: projectId,
-          scale: 1,
-          dpi: 1.0,
+          scale: isMobile ? 0.5 : 1,
+          dpi: isMobile ? 0.5 : 1.0,
           lazyLoad: true,
           production: true,
         })
         sceneRef.current = scene
       } catch (err) {
         console.error('[UnicornEffect] Error adding scene:', err)
+        if (isMounted) setHasError(true)
       }
     }
 
@@ -105,79 +96,27 @@ export const UnicornEffect = ({
       timers.forEach(clearTimeout)
       observer.disconnect()
     }
-  }, [projectId, isMobile])
+  }, [projectId])
 
-  // Mobile: enhanced CSS gradient fallback with animation
-  if (isMobile) {
+  // Only show minimal fallback if WebGL completely fails
+  if (hasError) {
     return (
-      <>
-        <style>{`
-          @keyframes unicornPulse {
-            0%, 100% { opacity: 0.85; transform: scale(1) translateY(0); }
-            50% { opacity: 1; transform: scale(1.05) translateY(-2%); }
-          }
-          @keyframes unicornShift {
-            0%, 100% { opacity: 0.6; transform: translateX(0) scale(1); }
-            50% { opacity: 0.9; transform: translateX(3%) scale(1.08); }
-          }
-        `}</style>
-        <div
-          className={className}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(180deg, #050008 0%, #000000 100%)',
-            overflow: 'hidden',
-            ...style,
-          }}
-        >
-          {/* Primary aurora glow */}
-          <div style={{
-            position: 'absolute',
-            top: '5%',
-            left: '15%',
-            width: '70%',
-            height: '60%',
-            background: 'radial-gradient(ellipse 100% 100% at 50% 30%, rgba(140,80,255,0.55) 0%, rgba(100,40,220,0.25) 40%, transparent 70%)',
-            filter: 'blur(30px)',
-            animation: 'unicornPulse 6s ease-in-out infinite',
-          }} />
-          {/* Bright center beam */}
-          <div style={{
-            position: 'absolute',
-            top: '0%',
-            left: '35%',
-            width: '30%',
-            height: '70%',
-            background: 'radial-gradient(ellipse 100% 80% at 50% 20%, rgba(200,170,255,0.50) 0%, rgba(150,100,255,0.20) 40%, transparent 70%)',
-            filter: 'blur(20px)',
-            animation: 'unicornShift 8s ease-in-out infinite',
-          }} />
-          {/* Subtle side accent */}
-          <div style={{
-            position: 'absolute',
-            top: '10%',
-            left: '5%',
-            width: '40%',
-            height: '50%',
-            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(80,40,200,0.20) 0%, transparent 70%)',
-            filter: 'blur(25px)',
-          }} />
-          {/* Subtle right accent */}
-          <div style={{
-            position: 'absolute',
-            top: '8%',
-            right: '5%',
-            width: '35%',
-            height: '45%',
-            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(120,60,255,0.15) 0%, transparent 70%)',
-            filter: 'blur(25px)',
-          }} />
-        </div>
-      </>
+      <div
+        className={className}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: `
+            radial-gradient(ellipse 8% 45% at 50% 20%, rgba(160,120,255,0.35) 0%, transparent 100%),
+            radial-gradient(ellipse 25% 20% at 50% 25%, rgba(80,40,200,0.12) 0%, transparent 100%),
+            linear-gradient(180deg, #050008 0%, #000000 100%)
+          `,
+          ...style,
+        }}
+      />
     )
   }
 
@@ -224,3 +163,4 @@ export const UnicornEffect = ({
 }
 
 export default UnicornEffect
+
