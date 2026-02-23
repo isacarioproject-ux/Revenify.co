@@ -107,26 +107,77 @@ export const UnicornEffect = ({
     }
   }, [projectId, isMobile])
 
-  // Mobile: lightweight CSS gradient fallback
+  // Mobile: enhanced CSS gradient fallback with animation
   if (isMobile) {
     return (
-      <div
-        className={className}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: `
-            radial-gradient(ellipse 12% 50% at 50% 25%, rgba(180,140,255,0.50) 0%, rgba(120,60,255,0.20) 50%, transparent 100%),
-            radial-gradient(ellipse 35% 25% at 50% 30%, rgba(80,40,200,0.18) 0%, transparent 100%),
-            radial-gradient(ellipse 6% 40% at 50% 25%, rgba(220,200,255,0.35) 0%, transparent 100%),
-            linear-gradient(180deg, #050008 0%, #000000 100%)
-          `,
-          ...style,
-        }}
-      />
+      <>
+        <style>{`
+          @keyframes unicornPulse {
+            0%, 100% { opacity: 0.85; transform: scale(1) translateY(0); }
+            50% { opacity: 1; transform: scale(1.05) translateY(-2%); }
+          }
+          @keyframes unicornShift {
+            0%, 100% { opacity: 0.6; transform: translateX(0) scale(1); }
+            50% { opacity: 0.9; transform: translateX(3%) scale(1.08); }
+          }
+        `}</style>
+        <div
+          className={className}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(180deg, #050008 0%, #000000 100%)',
+            overflow: 'hidden',
+            ...style,
+          }}
+        >
+          {/* Primary aurora glow */}
+          <div style={{
+            position: 'absolute',
+            top: '5%',
+            left: '15%',
+            width: '70%',
+            height: '60%',
+            background: 'radial-gradient(ellipse 100% 100% at 50% 30%, rgba(140,80,255,0.55) 0%, rgba(100,40,220,0.25) 40%, transparent 70%)',
+            filter: 'blur(30px)',
+            animation: 'unicornPulse 6s ease-in-out infinite',
+          }} />
+          {/* Bright center beam */}
+          <div style={{
+            position: 'absolute',
+            top: '0%',
+            left: '35%',
+            width: '30%',
+            height: '70%',
+            background: 'radial-gradient(ellipse 100% 80% at 50% 20%, rgba(200,170,255,0.50) 0%, rgba(150,100,255,0.20) 40%, transparent 70%)',
+            filter: 'blur(20px)',
+            animation: 'unicornShift 8s ease-in-out infinite',
+          }} />
+          {/* Subtle side accent */}
+          <div style={{
+            position: 'absolute',
+            top: '10%',
+            left: '5%',
+            width: '40%',
+            height: '50%',
+            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(80,40,200,0.20) 0%, transparent 70%)',
+            filter: 'blur(25px)',
+          }} />
+          {/* Subtle right accent */}
+          <div style={{
+            position: 'absolute',
+            top: '8%',
+            right: '5%',
+            width: '35%',
+            height: '45%',
+            background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(120,60,255,0.15) 0%, transparent 70%)',
+            filter: 'blur(25px)',
+          }} />
+        </div>
+      </>
     )
   }
 
