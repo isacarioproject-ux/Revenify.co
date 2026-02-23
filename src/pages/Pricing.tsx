@@ -23,9 +23,9 @@ export default function Pricing() {
 
     return (
         <>
-            <SEO 
-                title="Pricing"
-                description="Choose the right plan for your business. Start free, then scale as you grow. All plans include a 14-day free trial."
+            <SEO
+                title="Pricing — Plans Starting at $0, 3x Cheaper Than dub.co"
+                description="Compare Revenify pricing plans. Free tier available. Starter at $8/mo includes branded links, A/B testing, and UTM tracking. Pro at $24/mo adds link cloaking, deep links, and geo targeting. 3x cheaper than dub.co, 4x cheaper than Bitly."
                 url="https://revenify.co/pricing"
             />
             <Header />

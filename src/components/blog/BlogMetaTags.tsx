@@ -20,9 +20,38 @@ export function BlogMetaTags({
     publishedAt,
     author,
 }: BlogMetaTagsProps) {
-    const fullTitle = `${title} | Revenify Blog`
+    const fullTitle = `${title} — Revenify Blog`
     const defaultImage = 'https://revenify.co/og-image.png'
     const ogImage = image || defaultImage
+
+    // JSON-LD Article schema for Google rich snippets
+    const articleSchema = type === 'article' && publishedAt ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: title,
+        description: description,
+        image: ogImage,
+        url: url,
+        datePublished: formatDateISO(publishedAt),
+        dateModified: formatDateISO(publishedAt),
+        author: {
+            '@type': 'Person',
+            name: author || 'Revenify Team',
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Revenify',
+            url: 'https://revenify.co',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://revenify.co/favicon.svg',
+            },
+        },
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': url,
+        },
+    } : null
 
     return (
         <Helmet>
@@ -55,6 +84,14 @@ export function BlogMetaTags({
 
             {/* Canonical URL */}
             <link rel="canonical" href={url} />
+
+            {/* JSON-LD Structured Data */}
+            {articleSchema && (
+                <script type="application/ld+json">
+                    {JSON.stringify(articleSchema)}
+                </script>
+            )}
         </Helmet>
     )
 }
+

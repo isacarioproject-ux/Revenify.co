@@ -59,8 +59,8 @@ export default function Contact() {
     return (
         <>
             <SEO
-                title="Contact"
-                description="Get in touch with the Revenify team. We're here to help with any questions about revenue attribution analytics."
+                title="Contact Revenify — Get Help with Revenue Attribution & Link Tracking"
+                description="Questions about Revenify? Contact our team for support with pixel installation, API integration, custom domain setup, or enterprise plans. We respond within 24 hours."
                 url="https://revenify.co/contact"
             />
 

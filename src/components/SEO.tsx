@@ -9,15 +9,15 @@ interface SEOProps {
 }
 
 export const SEO = ({
-    title = 'Revenify - Revenue Attribution Analytics',
-    description = 'Track every dollar back to its source. Know exactly which marketing channels drive revenue with real-time attribution analytics.',
+    title = 'Revenify — Track Every Click, Attribute Every Sale',
+    description = 'Revenify is the all-in-one link shortener, tracking pixel, and revenue attribution platform. Branded short links with custom domain, real-time conversion tracking, link cloaking, and AI-powered analytics. The smarter alternative to dub.co and Bitly.',
     image = 'https://revenify.co/images/og/og-image.png',
     url = 'https://revenify.co',
     type = 'website',
 }: SEOProps) => {
-    const fullTitle = title === 'Revenify - Revenue Attribution Analytics' 
-        ? title 
-        : `${title} | Revenify`
+    const fullTitle = title === 'Revenify — Track Every Click, Attribute Every Sale'
+        ? title
+        : `${title} — Revenify`
 
     return (
         <Helmet>
@@ -42,7 +42,7 @@ export const SEO = ({
 
             {/* Additional */}
             <link rel="canonical" href={url} />
-            
+
             {/* Schema.org JSON-LD */}
             <script type="application/ld+json">
                 {JSON.stringify({

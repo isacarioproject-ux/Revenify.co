@@ -14,8 +14,8 @@ export default function Integrations() {
     return (
         <>
             <SEO
-                title="Integrations"
-                description="Connect Revenify with your favorite tools. Use our Pixel Tracking, REST API, Webhooks and more for complete revenue attribution."
+                title="Revenify Integrations — Works with Hotmart, Kiwify, Stripe, WordPress, Vercel"
+                description="Connect Revenify with your favorite tools. Native integrations with Hotmart, Kiwify, Stripe, Shopify, WordPress, Vercel, and 30+ platforms. Install the tracking pixel in one line of code."
                 url="https://revenify.co/integrations"
             />
 
@@ -94,7 +94,7 @@ export default function Integrations() {
                                     <span className="text-white/90">Integrate with your </span>
                                     <span className="text-white/50 italic">favorite tools</span>
                                 </h2>
-                                
+
                                 <p className="mt-6 text-white/40 max-w-md">
                                     Seamlessly connect with popular platforms and services to enhance your workflow.
                                 </p>
@@ -113,9 +113,9 @@ export default function Integrations() {
                                     transition={{ delay: 0.3 }}
                                     className="mt-16 flex items-start gap-4"
                                 >
-                                    <img 
-                                        src="/testigo1.png" 
-                                        alt="KleoveY" 
+                                    <img
+                                        src="/testigo1.png"
+                                        alt="KleoveY"
                                         className="w-12 h-12 rounded-xl object-cover flex-shrink-0"
                                     />
                                     <div>

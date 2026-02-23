@@ -41,8 +41,8 @@ export default function About() {
     return (
         <>
             <SEO
-                title="About"
-                description="Learn about Revenify's mission to help businesses understand their marketing ROI through powerful revenue attribution analytics."
+                title="About Revenify — The Revenue Attribution Platform for Modern Marketers"
+                description="Revenify was built for marketers, founders, and creators who need to know exactly which channel drives revenue. From vibe coders building with AI tools to agencies managing multi-channel campaigns."
                 url="https://revenify.co/about"
             />
 
@@ -79,7 +79,7 @@ export default function About() {
                                 transition={{ delay: 0.2 }}
                                 className="mt-6 text-white/40 max-w-lg mx-auto"
                             >
-                                Every business deserves to know exactly where their revenue comes from. 
+                                Every business deserves to know exactly where their revenue comes from.
                                 We're building the future of revenue attribution.
                             </motion.p>
 
@@ -117,9 +117,9 @@ export default function About() {
                             </h2>
 
                             <p className="mt-6 text-white/40 max-w-2xl mx-auto">
-                                We believe understanding where your revenue comes from shouldn't 
-                                require a team of data scientists or enterprise budgets. 
-                                Our mission is to make revenue attribution accessible, accurate, and 
+                                We believe understanding where your revenue comes from shouldn't
+                                require a team of data scientists or enterprise budgets.
+                                Our mission is to make revenue attribution accessible, accurate, and
                                 actionable for businesses of all sizes.
                             </p>
                         </motion.div>
