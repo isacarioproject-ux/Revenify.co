@@ -20,12 +20,34 @@ const features = [
 export const Hero = () => {
     return (
         <section className="relative pb-16 sm:pb-0 sm:min-h-screen flex flex-col items-center justify-start text-center bg-black overflow-hidden">
-            {/* Unicorn Studio Effect Background */}
-            <div className="absolute inset-0 z-0" style={{ height: '100%' }}>
-                <UnicornEffect
-                    projectId="JtvvoAbLWNMzlkLcKTRz"
-                    className="w-full h-full"
-                />
+            {/* Unicorn Studio Effect — narrow beam on mobile, full on desktop */}
+            <div
+                className="absolute z-10 pointer-events-none sm:inset-0"
+                style={{
+                    /* Mobile: narrow centered beam behind dashboard area */
+                    top: '40%',
+                    left: '20%',
+                    width: '60%',
+                    height: '60%',
+                }}
+            >
+                <style>{`
+                    @media (min-width: 640px) {
+                        .unicorn-wrapper {
+                            top: 0 !important;
+                            left: 0 !important;
+                            width: 100% !important;
+                            height: 100% !important;
+                            opacity: 1 !important;
+                        }
+                    }
+                `}</style>
+                <div className="unicorn-wrapper" style={{ width: '100%', height: '100%', opacity: 0.65 }}>
+                    <UnicornEffect
+                        projectId="JtvvoAbLWNMzlkLcKTRz"
+                        className="w-full h-full"
+                    />
+                </div>
             </div>
 
             {/* Text Content */}
@@ -48,7 +70,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="text-[2.5rem] leading-[1.08] font-bold text-left sm:text-center sm:text-5xl md:text-6xl lg:text-7xl sm:font-light sm:leading-[1.1] tracking-tight"
+                    className="text-[2rem] leading-[1.12] font-bold text-left sm:text-center sm:text-5xl md:text-6xl lg:text-7xl sm:font-light sm:leading-[1.1] tracking-tight"
                     style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)' }}
                 >
                     <span className="text-white">Rastreie cada </span>
@@ -63,7 +85,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mt-4 sm:mt-6 max-w-2xl sm:mx-auto text-base leading-relaxed sm:text-lg text-white/70 text-left sm:text-center"
+                    className="mt-3 sm:mt-6 max-w-2xl sm:mx-auto text-sm leading-relaxed sm:text-lg text-white/70 text-left sm:text-center"
                     style={{ textShadow: '0 2px 15px rgba(0,0,0,0.7), 0 4px 30px rgba(0,0,0,0.5)' }}
                 >
                     Saiba exatamente quais canais de marketing geram receita.
@@ -75,11 +97,11 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="mt-6 sm:mt-10 flex items-center sm:justify-center"
+                    className="mt-5 sm:mt-10 flex items-center sm:justify-center"
                 >
-                    <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-8 py-4 text-sm tracking-widest uppercase">
+                    <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-5 py-2.5 text-xs sm:px-8 sm:py-4 sm:text-sm tracking-widest uppercase">
                         COMECE GRÁTIS
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </AnimatedBorderButton>
                 </motion.div>
             </div>
