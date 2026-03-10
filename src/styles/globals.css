@@ -369,3 +369,17 @@ body {
 .blog-content tr:hover td {
   background: rgba(255, 255, 255, 0.02);
 }
+
+@layer base {
+  .theme {
+    --animate-gradient: gradient 8s linear infinite;
+  }
+}
+
+@theme inline {
+  @keyframes gradient {
+  to {
+    background-position: var(--bg-size, 300%) 0;
+    }
+  }
+}
