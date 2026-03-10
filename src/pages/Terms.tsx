@@ -39,7 +39,7 @@ export default function Terms() {
             <Header />
 
             <main className="bg-black min-h-screen pt-24 sm:pt-32 pb-12 sm:pb-16">
-                <div className="mx-auto max-w-4xl px-4 sm:px-6">
+                <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                     <div className="lg:grid lg:grid-cols-4 lg:gap-12">
                         {/* Sidebar */}
                         <aside className="hidden lg:block">
@@ -89,8 +89,8 @@ export default function Terms() {
                                         </h2>
                                         <div className="space-y-3 text-white/50 text-sm">
                                             <p>
-                                                By accessing or using Revenify's services, you agree to be bound by these Terms of Service 
-                                                and all applicable laws and regulations. If you do not agree with any of these terms, 
+                                                By accessing or using Revenify's services, you agree to be bound by these Terms of Service
+                                                and all applicable laws and regulations. If you do not agree with any of these terms,
                                                 you are prohibited from using or accessing our services.
                                             </p>
                                         </div>
@@ -102,7 +102,7 @@ export default function Terms() {
                                         </h2>
                                         <div className="space-y-3 text-white/50 text-sm">
                                             <p>
-                                                Revenify provides a revenue attribution analytics platform that helps businesses track 
+                                                Revenify provides a revenue attribution analytics platform that helps businesses track
                                                 and attribute revenue to marketing channels. Our services include:
                                             </p>
                                             <ul className="list-disc pl-6 space-y-2">
@@ -166,11 +166,11 @@ export default function Terms() {
                                         </h2>
                                         <div className="space-y-3 text-white/50 text-sm">
                                             <p>
-                                                Revenify and its original content, features, and functionality are owned by Revenify 
+                                                Revenify and its original content, features, and functionality are owned by Revenify
                                                 and are protected by international copyright, trademark, and other intellectual property laws.
                                             </p>
                                             <p>
-                                                You retain ownership of all data you upload to our platform. You grant us a license to 
+                                                You retain ownership of all data you upload to our platform. You grant us a license to
                                                 use this data solely to provide our services to you.
                                             </p>
                                         </div>
@@ -182,12 +182,12 @@ export default function Terms() {
                                         </h2>
                                         <div className="space-y-3 text-white/50 text-sm">
                                             <p>
-                                                To the maximum extent permitted by law, Revenify shall not be liable for any indirect, 
-                                                incidental, special, consequential, or punitive damages, including loss of profits, data, 
+                                                To the maximum extent permitted by law, Revenify shall not be liable for any indirect,
+                                                incidental, special, consequential, or punitive damages, including loss of profits, data,
                                                 or other intangible losses.
                                             </p>
                                             <p>
-                                                Our total liability for any claims under these terms shall not exceed the amount 
+                                                Our total liability for any claims under these terms shall not exceed the amount
                                                 you paid us in the last 12 months.
                                             </p>
                                         </div>
@@ -199,7 +199,7 @@ export default function Terms() {
                                         </h2>
                                         <div className="space-y-3 text-white/50 text-sm">
                                             <p>
-                                                We may terminate or suspend your account immediately, without prior notice, for any 
+                                                We may terminate or suspend your account immediately, without prior notice, for any
                                                 reason, including violation of these Terms. Upon termination:
                                             </p>
                                             <ul className="list-disc pl-6 space-y-2">
@@ -216,7 +216,7 @@ export default function Terms() {
                                         </h2>
                                         <div className="space-y-3 text-white/50 text-sm">
                                             <p>
-                                                These Terms shall be governed and construed in accordance with the laws of Brazil, 
+                                                These Terms shall be governed and construed in accordance with the laws of Brazil,
                                                 without regard to its conflict of law provisions.
                                             </p>
                                         </div>

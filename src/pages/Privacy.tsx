@@ -37,7 +37,7 @@ export default function Privacy() {
             <Header />
 
             <main className="bg-black min-h-screen pt-24 sm:pt-32 pb-12 sm:pb-16">
-                <div className="mx-auto max-w-4xl px-4 sm:px-6">
+                <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                     <div className="lg:grid lg:grid-cols-4 lg:gap-12">
                         {/* Sidebar */}
                         <aside className="hidden lg:block">
@@ -78,7 +78,7 @@ export default function Privacy() {
 
                                 <div className="mt-12 space-y-12">
                                     <p className="text-white/60">
-                                        At Revenify, we take your privacy seriously. This Privacy Policy explains how 
+                                        At Revenify, we take your privacy seriously. This Privacy Policy explains how
                                         we collect, use, disclose, and protect your information when you use our platform.
                                     </p>
 
@@ -180,7 +180,7 @@ export default function Privacy() {
                                         </h2>
                                         <div className="space-y-3 text-white/50 text-sm">
                                             <p>
-                                                We may update this Privacy Policy from time to time. We will notify you of any 
+                                                We may update this Privacy Policy from time to time. We will notify you of any
                                                 changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
                                             </p>
                                         </div>

@@ -19,14 +19,14 @@ const footerLinks = {
     { label: 'Facebook', href: 'https://www.facebook.com/share/14TfQRLd77F/', icon: Facebook },
     { label: 'Instagram', href: 'https://www.instagram.com/kleoveyaguaracuto?igsh=MXF5cnZiNjFvcmYxaw==', icon: Instagram },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kleove-yaguaracuto-295403399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', icon: Linkedin },
-    { label: 'X', href: 'https://x.com/KleoveY', icon: () => <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> },
+    { label: 'X', href: 'https://x.com/KleoveY', icon: () => <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg> },
   ],
 }
 
 export const Footer = () => {
   return (
-    <footer className="py-12 px-6 bg-black border-t border-white/[0.05]">
-      <div className="max-w-4xl mx-auto">
+    <footer className="py-12 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         {/* Main Footer */}
         <div className="flex flex-col md:flex-row md:justify-between gap-8 mb-12">
           {/* Brand Column */}
@@ -102,7 +102,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="pt-6 border-t border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Copyright */}
           <p className="text-sm text-white/20">
             © {new Date().getFullYear()} Revenify. All rights reserved.

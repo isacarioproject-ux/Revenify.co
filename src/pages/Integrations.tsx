@@ -23,8 +23,8 @@ export default function Integrations() {
 
             <main className="bg-black">
                 {/* Hero Section */}
-                <section className="pt-32 pb-20 px-6">
-                    <div className="max-w-4xl mx-auto text-center">
+                <section className="pt-32 pb-20">
+                    <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -39,12 +39,12 @@ export default function Integrations() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.2] pb-2"
+                            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] pb-2"
                         >
                             <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">
                                 Connect your
                             </span>
-                            <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent">
+                            <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">
                                 favorite tools
                             </span>
                         </motion.h1>
@@ -80,8 +80,8 @@ export default function Integrations() {
                 </section>
 
                 {/* How it Works Section - Layout like image */}
-                <section className="py-24 px-6">
-                    <div className="max-w-4xl mx-auto">
+                <section className="py-24">
+                    <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                             {/* Left side - Title and CTA */}
                             <motion.div
@@ -163,8 +163,8 @@ export default function Integrations() {
                 </section>
 
                 {/* Integration Features - Bento Grid */}
-                <section className="py-24 px-6">
-                    <div className="max-w-4xl mx-auto">
+                <section className="py-24">
+                    <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
                         <div className="text-center mb-12">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}

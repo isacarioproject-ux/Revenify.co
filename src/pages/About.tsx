@@ -51,7 +51,7 @@ export default function About() {
             <main className="bg-black min-h-screen">
                 {/* Hero */}
                 <section className="pt-32 pb-16 sm:pt-36 sm:pb-20">
-                    <div className="mx-auto max-w-4xl px-6">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         <div className="text-center">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -67,10 +67,10 @@ export default function About() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl lg:text-5xl font-light"
+                                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] pb-2"
                             >
-                                <span className="text-white/90">We're on a mission to </span>
-                                <span className="text-white/50 italic">democratize analytics</span>
+                                <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">We're on a mission to</span>
+                                <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">democratize analytics</span>
                             </motion.h1>
 
                             <motion.p
@@ -100,7 +100,7 @@ export default function About() {
 
                 {/* Mission */}
                 <section className="py-20">
-                    <div className="mx-auto max-w-4xl px-6">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function About() {
 
                 {/* Timeline - Minimalista */}
                 <section className="py-20">
-                    <div className="mx-auto max-w-4xl px-6">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -173,7 +173,7 @@ export default function About() {
 
                 {/* Values */}
                 <section className="py-20">
-                    <div className="mx-auto max-w-4xl px-6">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}

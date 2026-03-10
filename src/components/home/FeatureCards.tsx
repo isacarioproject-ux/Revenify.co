@@ -50,8 +50,8 @@ const features = [
 
 export const FeatureCards = () => {
   return (
-    <section className="py-8 px-6 bg-black">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-8 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <motion.div

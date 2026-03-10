@@ -42,8 +42,8 @@ const apiItems = [
 
 export const APIIntegration = () => {
   return (
-    <section className="py-16 sm:py-32 px-4 sm:px-6 bg-black">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-16 sm:py-32 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start">
           {/* Left Content */}
           <motion.div
@@ -62,7 +62,7 @@ export const APIIntegration = () => {
               <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">
                 High-Performance API
               </span>
-              <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">
                 Integration
               </span>
             </h2>
@@ -164,9 +164,8 @@ export const APIIntegration = () => {
                   className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-white/60"
                 >
                   <span
-                    className={`w-1.5 h-1.5 rounded-full ${
-                      integration.connected ? 'bg-green-400' : 'bg-orange-400'
-                    }`}
+                    className={`w-1.5 h-1.5 rounded-full ${integration.connected ? 'bg-green-400' : 'bg-orange-400'
+                      }`}
                   />
                   {integration.name}
                 </div>

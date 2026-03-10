@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { APP_URL } from '@/lib/constants'
 import { AnimatedBorderButton } from '@/components/ui/moving-border'
-import { UnicornEffect } from '@/components/UnicornEffect'
+
 
 const features = [
     'A/B Testing',
@@ -20,62 +20,19 @@ const features = [
 export const Hero = () => {
     return (
         <section className="relative pb-16 sm:pb-0 sm:min-h-screen flex flex-col items-center justify-start text-center bg-black overflow-hidden">
-            {/* Unicorn Studio Effect — narrow beam on mobile, full on desktop */}
-            <div
-                className="absolute z-10 pointer-events-none sm:inset-0"
-                style={{
-                    /* Mobile: narrow centered beam behind dashboard area */
-                    top: '40%',
-                    left: '20%',
-                    width: '60%',
-                    height: '60%',
-                }}
-            >
-                <style>{`
-                    @media (min-width: 640px) {
-                        .unicorn-wrapper {
-                            top: 0 !important;
-                            left: 0 !important;
-                            width: 100% !important;
-                            height: 100% !important;
-                            opacity: 1 !important;
-                        }
-                    }
-                `}</style>
-                <div className="unicorn-wrapper" style={{ width: '100%', height: '100%', opacity: 0.65 }}>
-                    <UnicornEffect
-                        projectId="JtvvoAbLWNMzlkLcKTRz"
-                        className="w-full h-full"
-                    />
-                </div>
-            </div>
 
             {/* Text Content */}
-            <div className="relative z-20 w-full max-w-6xl mx-auto px-5 sm:px-6 pt-28 sm:pt-28 pb-4 sm:pb-12">
-                {/* Tag/Badge — hidden on mobile */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="hidden sm:block mb-6"
-                >
-                    <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-white/50">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                        NOVO: Atribuição de Múltiplas Fontes
-                    </span>
-                </motion.div>
-
+            <div className="relative z-20 w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-24">
                 {/* Headline */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="text-[2rem] leading-[1.12] font-bold text-left sm:text-center sm:text-5xl md:text-6xl lg:text-7xl sm:font-light sm:leading-[1.1] tracking-tight"
-                    style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)' }}
+                    className="text-[2.5rem] leading-[1.15] font-bold italic text-left sm:not-italic sm:text-left sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] sm:font-bold sm:leading-[1.05] tracking-tight sm:tracking-[-0.03em] max-w-4xl"
+                    style={{ textShadow: '0 4px 60px rgba(0,0,0,0.5)' }}
                 >
                     <span className="text-white">Rastreie cada </span>
-                    <span className="text-white/90">dólar</span>
-                    <br />
+                    <span className="text-white/90">dólar </span>
                     <span className="text-white">até </span>
                     <span className="text-white/90">sua origem.</span>
                 </motion.h1>
@@ -85,11 +42,10 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mt-3 sm:mt-6 max-w-2xl sm:mx-auto text-sm leading-relaxed sm:text-lg text-white/70 text-left sm:text-center"
-                    style={{ textShadow: '0 2px 15px rgba(0,0,0,0.7), 0 4px 30px rgba(0,0,0,0.5)' }}
+                    className="mt-6 sm:mt-10 max-w-2xl sm:max-w-[36rem] text-[1rem] leading-relaxed sm:text-[1.3rem] text-white/60 sm:text-white/60 text-left font-medium sm:font-normal"
                 >
                     Saiba exatamente quais canais de marketing geram receita.
-                    Pare de adivinhar. Comece a otimizar.
+                    Pare de adivinhar. Comece a melhorar.
                 </motion.p>
 
                 {/* CTA */}
@@ -97,70 +53,83 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="mt-5 sm:mt-10 flex items-center sm:justify-center"
+                    className="mt-10 sm:mt-14 flex items-center justify-start sm:justify-start"
                 >
-                    <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-5 py-2.5 text-xs sm:px-8 sm:py-4 sm:text-sm tracking-widest uppercase">
+                    <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-8 py-3.5 text-xs sm:px-10 sm:py-5 sm:text-[0.95rem] tracking-[0.15em] sm:tracking-[0.2em] font-semibold uppercase">
                         COMECE GRÁTIS
-                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        <ArrowRight className="w-4 h-4 ml-1" />
                     </AnimatedBorderButton>
                 </motion.div>
             </div>
 
-            {/* Dashboard Preview */}
+            {/* Dashboard Preview & Marquee Constrained */}
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="relative z-20 w-full mt-12 sm:mt-0 px-3 sm:px-0 sm:max-w-[90vw] lg:max-w-[80vw] xl:max-w-[75vw] mx-auto"
+                className="relative z-20 w-full mt-12 sm:mt-0 px-3 sm:px-8 xl:px-12 max-w-7xl mx-auto"
             >
-                <div
-                    className="relative overflow-hidden rounded-xl"
-                    style={{ boxShadow: '0 20px 50px rgba(0,0,0,0.5), 0 0 80px rgba(100,60,200,0.08)' }}
-                >
-                    {/* Desktop image */}
-                    <img
-                        src="/Desktop.png"
-                        alt="Revenify Dashboard - Revenue Attribution Analytics"
-                        className="hidden sm:block w-full h-auto object-cover object-top"
-                        loading="eager"
-                        decoding="async"
+                {/* Dashboard Outer Glowing Border Container (Animated Conic Gradient) */}
+                <div className="relative rounded-[14px] pt-[2px] pr-[2px] shadow-[30px_-30px_80px_-20px_rgba(26,75,140,0.5)] bg-[#050505] overflow-hidden">
+                    {/* Animated moving gradient, similar to buttons but constrained to top/right exposed padding */}
+                    <motion.div
+                        className="absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,#020617_0%,#3b82f6_50%,#020617_100%)] opacity-100 z-10"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                     />
-                    {/* Mobile image */}
-                    <img
-                        src="/Mobile.png"
-                        alt="Revenify Dashboard"
-                        className="sm:hidden w-full h-auto object-cover object-top"
-                        loading="eager"
-                        decoding="async"
-                    />
+
+                    <div
+                        className="relative overflow-hidden rounded-[13px] bg-black z-20"
+                    >
+                        {/* Desktop image */}
+                        <img
+                            src="/Desktop.png"
+                            alt="Revenify Dashboard - Revenue Attribution Analytics"
+                            className="hidden sm:block w-full h-auto object-cover object-top"
+                            loading="eager"
+                            decoding="async"
+                        />
+                        {/* Mobile image */}
+                        <img
+                            src="/Mobile.png"
+                            alt="Revenify Dashboard"
+                            className="sm:hidden w-full h-auto object-cover object-top"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    </div>
                 </div>
             </motion.div>
 
-            {/* Bottom gradient fade */}
+            {/* Bottom gradient fade — Section Level (z-30) - covers the bottom of the dashboard image to create a smooth transition */}
             <div
                 className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none"
-                style={{ height: '30%', background: 'linear-gradient(to top, #000000 0%, #000000 25%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0) 100%)' }}
+                style={{ height: '250px', background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)' }}
             />
 
-            {/* Animated Feature Marquee Strip — in flow, not absolute */}
-            <div className="relative z-40 w-full overflow-hidden bg-black">
-                <div className="relative py-3 sm:py-4">
-                    {/* Side gradient fades */}
-                    <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #000000, transparent)' }} />
-                    <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #000000, transparent)' }} />
+            {/* Animated Feature Marquee Strip — (z-40) - Sitting perfectly on top of the section gradient, horizontally constrained to exactly match the dashboard image width */}
+            <div className="absolute bottom-6 left-0 right-0 z-40 w-full pointer-events-none">
+                <div className="w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
+                    <div className="relative overflow-hidden bg-transparent pointer-events-auto">
+                        <div className="relative py-3 sm:py-4">
+                            {/* Side gradient fades specific to the marquee text */}
+                            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, rgb(0,0,0), transparent)' }} />
+                            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, rgb(0,0,0), transparent)' }} />
 
-                    {/* Scrolling content (duplicated for seamless loop) */}
-                    <div className="flex whitespace-nowrap" style={{ animation: 'marquee 25s linear infinite', willChange: 'transform', backfaceVisibility: 'hidden' }}>
-                        {[0, 1].map((i) => (
-                            <div key={i} className="flex items-center shrink-0">
-                                {features.map((feature) => (
-                                    <span key={`${i}-${feature}`} className="flex items-center">
-                                        <span className="text-sm sm:text-base font-semibold tracking-tight text-white/60 mx-4 sm:mx-6">{feature}</span>
-                                        <span className="text-white/20 text-xs">●</span>
-                                    </span>
+                            {/* Scrolling content */}
+                            <div className="flex whitespace-nowrap" style={{ animation: 'marquee 25s linear infinite', willChange: 'transform', backfaceVisibility: 'hidden' }}>
+                                {[0, 1].map((i) => (
+                                    <div key={i} className="flex items-center shrink-0">
+                                        {features.map((feature) => (
+                                            <span key={`${i}-${feature}`} className="flex items-center">
+                                                <span className="text-sm sm:text-base font-semibold tracking-tight text-white/60 mx-4 sm:mx-6">{feature}</span>
+                                                <span className="text-white/20 text-xs">●</span>
+                                            </span>
+                                        ))}
+                                    </div>
                                 ))}
                             </div>
-                        ))}
+                        </div>
                     </div>
                 </div>
             </div>

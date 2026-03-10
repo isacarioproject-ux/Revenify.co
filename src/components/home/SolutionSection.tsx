@@ -26,8 +26,8 @@ const features = [
 
 export const SolutionSection = () => {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-black">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-16 sm:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,13 +35,12 @@ export const SolutionSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4">
-            <span className="text-white/90">Finally, </span>
-            <span className="text-white/50 italic">clarity</span>
-            <span className="text-white/90"> on your marketing spend</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4">
+            <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">Finally, clarity</span>
+            <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">on your marketing spend</span>
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto leading-relaxed">
-            Revenify tracks every visitor, every touchpoint, and every conversion — 
+            Revenify tracks every visitor, every touchpoint, and every conversion —
             then attributes revenue back to the exact source.
           </p>
         </motion.div>

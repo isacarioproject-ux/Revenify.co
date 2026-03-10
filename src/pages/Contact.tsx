@@ -69,7 +69,7 @@ export default function Contact() {
             <main className="bg-black min-h-screen">
                 {/* Hero */}
                 <section className="pt-32 pb-8 sm:pt-36 sm:pb-12">
-                    <div className="mx-auto max-w-4xl px-6">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         <div className="text-center">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export default function Contact() {
 
                 {/* Content */}
                 <section className="py-12">
-                    <div className="mx-auto max-w-4xl px-6">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         <div className="grid lg:grid-cols-3 gap-8">
                             {/* Contact Form */}
                             <motion.div

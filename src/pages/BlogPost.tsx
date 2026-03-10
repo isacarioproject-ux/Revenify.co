@@ -36,7 +36,7 @@ export default function BlogPost() {
             <>
                 <Header />
                 <main className="min-h-screen bg-black pt-24">
-                    <div className="max-w-4xl mx-auto px-6 py-8">
+                    <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 py-8">
                         <Skeleton className="h-10 w-32 mb-8 bg-white/10" />
                         <div className="max-w-6xl mx-auto">
                             <div className="mb-8 space-y-4">
@@ -76,7 +76,7 @@ export default function BlogPost() {
 
             <main className="min-h-screen bg-black pt-24">
                 {/* Back Button */}
-                <div className="max-w-4xl mx-auto px-6 pt-4">
+                <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 pt-4">
                     <Link to="/blog">
                         <Button variant="ghost" size="sm" className="gap-2 text-white/60 hover:text-white hover:bg-white/10">
                             <ChevronLeft className="h-4 w-4" />
@@ -85,7 +85,7 @@ export default function BlogPost() {
                     </Link>
                 </div>
 
-                <article className="max-w-4xl mx-auto px-6 py-8 lg:py-12">
+                <article className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 py-8 lg:py-12">
                     <div className="max-w-6xl mx-auto">
                         {/* Header */}
                         <motion.header

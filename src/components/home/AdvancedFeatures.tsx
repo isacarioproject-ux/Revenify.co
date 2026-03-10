@@ -14,8 +14,8 @@ const iconMap: Record<string, React.ElementType> = {
 
 export const AdvancedFeatures = () => {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-black">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-16 sm:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         {/* Header */}
         <div className="text-center mb-12">
           {/* Badge */}
@@ -36,10 +36,10 @@ export const AdvancedFeatures = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4"
           >
-            <span className="text-white/90">Powerful tools for </span>
-            <span className="text-white/50 italic">smart marketers</span>
+            <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">Powerful tools for</span>
+            <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">smart marketers</span>
           </motion.h2>
 
           <motion.p
@@ -91,13 +91,12 @@ export const AdvancedFeatures = () => {
                   {feature.plans.map((plan) => (
                     <span
                       key={plan}
-                      className={`text-xs px-2 py-1 rounded-md ${
-                        plan === 'Business'
-                          ? 'bg-purple-500/10 text-purple-400'
-                          : plan === 'Pro'
+                      className={`text-xs px-2 py-1 rounded-md ${plan === 'Business'
+                        ? 'bg-purple-500/10 text-purple-400'
+                        : plan === 'Pro'
                           ? 'bg-blue-500/10 text-blue-400'
                           : 'bg-green-500/10 text-green-400'
-                      }`}
+                        }`}
                     >
                       {plan}
                     </span>

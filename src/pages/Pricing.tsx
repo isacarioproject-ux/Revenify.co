@@ -33,7 +33,7 @@ export default function Pricing() {
             <main className="bg-black">
                 {/* Pricing Hero */}
                 <section className="pt-32 pb-8 sm:pt-36 sm:pb-12">
-                    <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         <div className="text-center">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -49,10 +49,10 @@ export default function Pricing() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl lg:text-5xl font-light"
+                                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] pb-2"
                             >
-                                <span className="text-white/90">Choose the plan </span>
-                                <span className="text-white/50 italic">that's right for you</span>
+                                <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">Choose the plan</span>
+                                <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">that's right for you</span>
                             </motion.h1>
 
                             <motion.p
@@ -69,7 +69,7 @@ export default function Pricing() {
 
                 {/* Pricing Cards */}
                 <section className="py-12 sm:py-16">
-                    <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                    <div className="mx-auto max-w-7xl px-3 sm:px-8 xl:px-12">
                         {/* Toggle */}
                         <div className="flex items-center justify-center gap-4 mb-12">
                             <span className={cn(

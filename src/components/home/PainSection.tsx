@@ -32,8 +32,8 @@ const painPoints = [
 
 export const PainSection = () => {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-black">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-16 sm:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,9 +41,9 @@ export const PainSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4">
-            <span className="text-white/90">Marketing without attribution is </span>
-            <span className="text-white/50 italic">gambling</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4">
+            <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">Marketing without attribution is</span>
+            <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">gambling</span>
           </h2>
           <p className="text-white/40 max-w-xl mx-auto">
             Every day, marketers waste budget on channels that don't convert — simply because they can't see what's working.

@@ -29,8 +29,8 @@ export default function Blog() {
 
             <main className="min-h-screen bg-black">
                 {/* Hero Section */}
-                <section className="pt-24 sm:pt-32 pb-10 sm:pb-16 px-4 sm:px-6">
-                    <div className="max-w-4xl mx-auto text-center">
+                <section className="pt-24 sm:pt-32 pb-10 sm:pb-16">
+                    <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -64,36 +64,38 @@ export default function Blog() {
                 </section>
 
                 {/* Content Section */}
-                <section className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-                    {/* Tabs */}
-                    <div className="flex justify-center mb-12">
-                        {categoriesLoading ? (
-                            <Skeleton className="h-12 w-96 bg-white/10" />
+                <section className="py-8 sm:py-12">
+                    <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
+                        {/* Tabs */}
+                        <div className="flex justify-center mb-12">
+                            {categoriesLoading ? (
+                                <Skeleton className="h-12 w-96 bg-white/10" />
+                            ) : (
+                                <BlogTabs
+                                    categories={categories}
+                                    activeCategory={activeCategory}
+                                    onCategoryChange={setActiveCategory}
+                                />
+                            )}
+                        </div>
+
+                        {/* Posts Grid */}
+                        {postsLoading ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {[...Array(6)].map((_, i) => (
+                                    <div key={i} className="space-y-4">
+                                        <Skeleton className="h-48 w-full bg-white/10 rounded-xl" />
+                                        <Skeleton className="h-4 w-24 bg-white/10" />
+                                        <Skeleton className="h-6 w-full bg-white/10" />
+                                        <Skeleton className="h-4 w-full bg-white/10" />
+                                        <Skeleton className="h-4 w-3/4 bg-white/10" />
+                                    </div>
+                                ))}
+                            </div>
                         ) : (
-                            <BlogTabs
-                                categories={categories}
-                                activeCategory={activeCategory}
-                                onCategoryChange={setActiveCategory}
-                            />
+                            <BlogGrid posts={posts} />
                         )}
                     </div>
-
-                    {/* Posts Grid */}
-                    {postsLoading ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {[...Array(6)].map((_, i) => (
-                                <div key={i} className="space-y-4">
-                                    <Skeleton className="h-48 w-full bg-white/10 rounded-xl" />
-                                    <Skeleton className="h-4 w-24 bg-white/10" />
-                                    <Skeleton className="h-6 w-full bg-white/10" />
-                                    <Skeleton className="h-4 w-full bg-white/10" />
-                                    <Skeleton className="h-4 w-3/4 bg-white/10" />
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <BlogGrid posts={posts} />
-                    )}
                 </section>
             </main>
 

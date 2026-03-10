@@ -43,8 +43,8 @@ const StatusIcon = ({ status }: { status: boolean | string }) => {
 
 export const Comparison = () => {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-black">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-16 sm:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         {/* Header */}
         <div className="text-center mb-12">
           {/* Badge */}
@@ -65,10 +65,10 @@ export const Comparison = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4"
           >
-            <span className="text-white/90">Stop using the </span>
-            <span className="text-white/50 italic">wrong tools</span>
+            <span className="block bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text text-transparent pb-1">Stop using the</span>
+            <span className="block bg-gradient-to-b from-white/70 via-white/50 to-white/30 bg-clip-text text-transparent italic">wrong tools</span>
           </motion.h2>
 
           <motion.p

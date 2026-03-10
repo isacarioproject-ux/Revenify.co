@@ -7,8 +7,8 @@ import { AnimatedBorderButton } from '@/components/ui/moving-border'
 
 export const CTA = () => {
   return (
-    <section className="py-16 sm:py-32 px-4 sm:px-6 bg-black">
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="py-16 sm:py-32 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -12,8 +12,8 @@ const attributionSources = [
 
 export const Dashboard = () => {
   return (
-    <section className="py-16 sm:py-32 px-4 sm:px-6 bg-black">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-16 sm:py-32 bg-black">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
           {/* Left Content */}
           <motion.div
