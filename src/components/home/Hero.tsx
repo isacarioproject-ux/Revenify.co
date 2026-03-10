@@ -3,9 +3,6 @@ import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { APP_URL } from '@/lib/constants'
 import { AnimatedBorderButton } from '@/components/ui/moving-border'
-import { DotPattern } from '@/components/ui/dot-pattern'
-import { AnimatedGradientText } from '@/components/ui/animated-gradient-text'
-import { cn } from '@/lib/utils'
 
 
 const features = [
@@ -24,53 +21,21 @@ export const Hero = () => {
     return (
         <section className="relative pb-16 sm:pb-0 sm:min-h-screen flex flex-col items-center justify-start text-center bg-black overflow-hidden">
 
-            {/* Dot Pattern Background with 25% gradient fade */}
-            <div className="absolute inset-0 z-0 h-full w-full pointer-events-none">
-                <DotPattern
-                    className={cn(
-                        "[mask-image:radial-gradient(100%_100%_at_top_center,white,transparent)] opacity-20"
-                    )}
-                />
-                {/* 25% Black gradient from left to right */}
-                <div
-                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-black via-black/80 to-transparent"
-                    style={{ width: '25%' }}
-                />
-            </div>
-
             {/* Text Content */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-24">
                 {/* Headline */}
-                {/* Headline wrapped in MagicUI AnimatedGradient Box */}
-                <div className="group relative inline-flex items-center justify-start rounded-full shadow-[inset_0_-8px_10px_rgba(0,0,0,0.5)] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_rgba(30,30,30,0.5)]">
-                    <span
-                        className={cn(
-                            "animate-gradient absolute inset-0 block h-full w-full rounded-[inherit] bg-gradient-to-r from-[#0a0a0a] via-[#262626] to-[#0a0a0a] bg-[length:300%_100%] p-[1px]"
-                        )}
-                        style={{
-                            WebkitMask:
-                                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                            WebkitMaskComposite: "destination-out",
-                            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                            maskComposite: "subtract",
-                            WebkitClipPath: "padding-box",
-                        }}
-                    />
-                    <AnimatedGradientText className="p-0 bg-transparent text-inherit" colorFrom="#0a0a0a" colorTo="#262626">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-[2.5rem] leading-[1.15] font-bold italic text-left sm:not-italic sm:text-left sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] sm:font-bold sm:leading-[1.05] tracking-tight sm:tracking-[-0.03em] max-w-4xl"
-                            style={{ textShadow: '0 4px 60px rgba(0,0,0,0.5)' }}
-                        >
-                            <span className="text-white">Rastreie cada </span>
-                            <span className="text-white/90">dólar </span>
-                            <span className="text-white">até </span>
-                            <span className="text-white/90">sua origem.</span>
-                        </motion.h1>
-                    </AnimatedGradientText>
-                </div>
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="text-[2.5rem] leading-[1.15] font-bold italic text-left sm:not-italic sm:text-left sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] sm:font-bold sm:leading-[1.05] tracking-tight sm:tracking-[-0.03em] max-w-4xl"
+                    style={{ textShadow: '0 4px 60px rgba(0,0,0,0.5)' }}
+                >
+                    <span className="text-white">Rastreie cada </span>
+                    <span className="text-white/90">dólar </span>
+                    <span className="text-white">até </span>
+                    <span className="text-white/90">sua origem.</span>
+                </motion.h1>
 
                 {/* Description */}
                 <motion.p
