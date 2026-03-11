@@ -3,6 +3,9 @@ import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { APP_URL } from '@/lib/constants'
 import { AnimatedBorderButton } from '@/components/ui/moving-border'
+import { DotPattern } from '@/components/ui/dot-pattern'
+import { AnimatedGradientText } from '@/components/ui/animated-gradient-text'
+import { cn } from '@/lib/utils'
 
 
 const features = [
@@ -21,20 +24,37 @@ export const Hero = () => {
     return (
         <section className="relative pb-16 sm:pb-0 sm:min-h-screen flex flex-col items-center justify-start text-center bg-black overflow-hidden">
 
+            {/* Dot Pattern Background with 25% gradient fade */}
+            <div className="absolute inset-0 z-0 h-full w-full pointer-events-none">
+                <DotPattern
+                    className={cn(
+                        "[mask-image:radial-gradient(100%_100%_at_top_center,white,transparent)] opacity-20"
+                    )}
+                />
+                {/* 25% Black gradient from left to right */}
+                <div
+                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-black via-black/90 to-transparent"
+                    style={{ width: '25%' }}
+                />
+            </div>
+
             {/* Text Content */}
-            <div className="relative z-20 w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 pt-20 sm:pt-24 lg:pt-28 pb-4 sm:pb-24">
+            <div className="relative z-20 w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 pt-36 sm:pt-40 lg:pt-44 pb-4 sm:pb-24">
                 {/* Headline */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="text-[2.5rem] leading-[1.15] font-bold italic text-left sm:not-italic sm:text-left sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] sm:font-bold sm:leading-[1.05] tracking-tight sm:tracking-[-0.03em] max-w-4xl"
+                    className="text-[2.25rem] leading-[1.1] font-bold italic text-left sm:not-italic sm:text-left sm:text-[3rem] md:text-[3.5rem] lg:text-[4.5rem] sm:font-bold sm:leading-[1.1] tracking-tight sm:tracking-[-0.03em] max-w-4xl"
                     style={{ textShadow: '0 4px 60px rgba(0,0,0,0.5)' }}
                 >
-                    <span className="text-white">Rastreie cada </span>
-                    <span className="text-white/90">dólar </span>
-                    <span className="text-white">até </span>
-                    <span className="text-white/90">sua origem.</span>
+                    <AnimatedGradientText colorFrom="#ffffff" colorTo="#999999" className="p-0 pb-1 border-none bg-transparent block">
+                        <span>Track every </span>
+                        <span>dollar </span>
+                        <br />
+                        <span>to </span>
+                        <span>its origin.</span>
+                    </AnimatedGradientText>
                 </motion.h1>
 
                 {/* Description */}
@@ -42,10 +62,19 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mt-6 sm:mt-10 max-w-2xl sm:max-w-[36rem] text-[1rem] leading-relaxed sm:text-[1.3rem] text-white/60 sm:text-white/60 text-left font-medium sm:font-normal"
+                    className="mt-3 sm:mt-4 max-w-2xl sm:max-w-3xl text-[1rem] leading-relaxed sm:text-[1.3rem] text-white/60 sm:text-white/60 text-left font-medium sm:font-normal"
                 >
-                    Saiba exatamente quais canais de marketing geram receita.
-                    Pare de adivinhar. Comece a melhorar.
+                    {/* Mobile text (3 lines, Huly.io style) */}
+                    <span className="block sm:hidden">
+                        Know exactly which marketing<br />
+                        channels generate revenue. Stop<br />
+                        guessing. Start improving.
+                    </span>
+                    {/* Desktop text (2 lines) */}
+                    <span className="hidden sm:block">
+                        Know exactly which marketing channels generate revenue.<br />
+                        Stop guessing. Start improving.
+                    </span>
                 </motion.p>
 
                 {/* CTA */}
@@ -53,10 +82,10 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="mt-10 sm:mt-14 flex items-center justify-start sm:justify-start"
+                    className="mt-6 sm:mt-12 flex items-center justify-start sm:justify-start"
                 >
                     <AnimatedBorderButton as="a" href={`${APP_URL}/auth?mode=signup`} className="px-8 py-3.5 text-xs sm:px-10 sm:py-5 sm:text-[0.95rem] tracking-[0.15em] sm:tracking-[0.2em] font-semibold uppercase">
-                        COMECE GRÁTIS
+                        START FREE
                         <ArrowRight className="w-4 h-4 ml-1" />
                     </AnimatedBorderButton>
                 </motion.div>

@@ -30,14 +30,25 @@ export function AnimatedBorderButton({
         animate={{ rotate: 360 }}
         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
       />
-      {/* Inner content - neutral-800 background */}
+      {/* Inner content - premium black background */}
       <span
         className={cn(
-          "inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-neutral-800 px-6 py-3 text-sm font-medium text-white backdrop-blur-3xl gap-2",
+          "relative inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white backdrop-blur-3xl gap-2 overflow-hidden",
           className
         )}
       >
-        {children}
+        {/* Shine reflection sweep */}
+        <span
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: 'linear-gradient(105deg, transparent 30%, rgba(100,220,220,0.15) 45%, rgba(100,220,220,0.06) 50%, transparent 65%)',
+            backgroundSize: '300% 100%',
+            animation: 'btn-shine 4s linear infinite',
+          }}
+        />
+        <span className="relative z-10 flex items-center gap-2">
+          {children}
+        </span>
       </span>
     </Component>
   );
