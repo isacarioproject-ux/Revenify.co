@@ -39,7 +39,7 @@ export const Hero = () => {
             </div>
 
             {/* Text Content */}
-            <div className="relative z-20 w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 pt-36 sm:pt-40 lg:pt-44 pb-4 sm:pb-24">
+            <div className="relative z-30 w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12 pt-36 sm:pt-40 lg:pt-44 pb-4 sm:pb-24 lg:pb-40">
                 {/* Headline */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
@@ -96,10 +96,10 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.5 }}
-                className="relative z-20 w-full mt-12 sm:mt-0 px-3 sm:px-8 xl:px-12 max-w-7xl mx-auto"
+                className="relative z-20 w-full mt-12 sm:mt-0 lg:-mt-[11.9rem] xl:-mt-[13.4rem] px-3 sm:px-8 xl:px-12 max-w-7xl mx-auto flex justify-end"
             >
                 {/* Dashboard Outer Glowing Border Container (Animated Conic Gradient) */}
-                <div className="relative rounded-[14px] pt-[2px] pr-[2px] shadow-[30px_-30px_80px_-20px_rgba(26,75,140,0.5)] bg-[#050505] overflow-hidden">
+                <div className="relative rounded-[14px] pt-[2px] pr-[2px] shadow-[30px_-30px_80px_-20px_rgba(26,75,140,0.5)] bg-[#050505] overflow-hidden w-full lg:w-[75%] xl:w-[70%]">
                     {/* Animated moving gradient, similar to buttons but constrained to top/right exposed padding */}
                     <motion.div
                         className="absolute inset-[-1000%] bg-[conic-gradient(from_90deg_at_50%_50%,#020617_0%,#3b82f6_50%,#020617_100%)] opacity-100 z-10"
@@ -108,23 +108,19 @@ export const Hero = () => {
                     />
 
                     <div
-                        className="relative overflow-hidden rounded-[13px] bg-black z-20"
+                        className="relative overflow-hidden rounded-[13px] bg-[#0A0A0B] z-20"
                     >
-                        {/* Desktop image */}
-                        <img
-                            src="/Desktop.png"
-                            alt="Revenify Dashboard - Revenue Attribution Analytics"
-                            className="hidden sm:block w-full h-auto object-cover object-top"
-                            loading="eager"
-                            decoding="async"
+                        {/* Desktop Image */}
+                        <img 
+                            src="/desktop.png" 
+                            alt="Revenify Dashboard" 
+                            className="hidden sm:block w-full h-auto object-cover object-left-top shadow-2xl relative z-20" 
                         />
-                        {/* Mobile image */}
-                        <img
-                            src="/Mobile.png"
-                            alt="Revenify Dashboard"
-                            className="sm:hidden w-full h-auto object-cover object-top"
-                            loading="eager"
-                            decoding="async"
+                        {/* Mobile Image */}
+                        <img 
+                            src="/mobile.png" 
+                            alt="Revenify App Mobile" 
+                            className="block sm:hidden w-full h-auto object-cover object-top shadow-lg relative z-20" 
                         />
                     </div>
                 </div>
@@ -137,10 +133,9 @@ export const Hero = () => {
             />
 
             {/* Animated Feature Marquee Strip — (z-40) - Sitting perfectly on top of the section gradient, horizontally constrained to exactly match the dashboard image width */}
-            <div className="absolute bottom-6 left-0 right-0 z-40 w-full pointer-events-none">
-                <div className="w-full max-w-7xl mx-auto px-3 sm:px-8 xl:px-12">
-                    <div className="relative overflow-hidden bg-transparent pointer-events-auto">
-                        <div className="relative py-3 sm:py-4">
+            <div className="absolute bottom-6 left-0 right-0 z-40 w-full pointer-events-none px-3 sm:px-8 xl:px-12 max-w-7xl mx-auto flex justify-end">
+                <div className="w-full lg:w-[75%] xl:w-[70%] relative overflow-hidden bg-transparent pointer-events-auto">
+                    <div className="relative py-3 sm:py-4">
                             {/* Side gradient fades specific to the marquee text */}
                             <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, rgb(0,0,0), transparent)' }} />
                             <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, rgb(0,0,0), transparent)' }} />
@@ -161,7 +156,6 @@ export const Hero = () => {
                         </div>
                     </div>
                 </div>
-            </div>
 
             <style>{`
         @keyframes marquee {
