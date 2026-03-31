@@ -112,13 +112,13 @@ export const Hero = () => {
                     >
                         {/* Desktop Image */}
                         <img 
-                            src="/desktop.png" 
+                            src="/Desktop.png" 
                             alt="Revenify Dashboard" 
                             className="hidden sm:block w-full h-auto object-cover object-left-top shadow-2xl relative z-20" 
                         />
                         {/* Mobile Image */}
                         <img 
-                            src="/mobile.png" 
+                            src="/Mobile.png" 
                             alt="Revenify App Mobile" 
                             className="block sm:hidden w-full h-auto object-cover object-top shadow-lg relative z-20" 
                         />
